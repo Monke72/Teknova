@@ -1,5 +1,5 @@
 export interface IUserState {
   password: string;
   entry: boolean;
-  tel: string;
+  mail: string;
 }

@@ -12,11 +12,13 @@ import {
 } from "redux-persist";
 import userReducer from "@features/Auth/slice";
 import { navSectionReducer } from "@features/Navigation/slice";
+import productsReducer from "@entities/products/model/productsSlice";
 
 // Создаем rootReducer из всех слайсов
 export const rootReducer = combineReducers({
   userReg: userReducer,
   navSection: navSectionReducer,
+  productsList: productsReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
