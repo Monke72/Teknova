@@ -6,7 +6,7 @@ import { validatePhone } from "@shared/utils/telValid/telValid";
 import React, { useState } from "react";
 import logoIcon from "@shared/assets/logo.svg";
 import { useNavigate } from "react-router-dom";
-import "./RegistrWindow.scss";
+import cls from "./RegistrWindow.module.scss";
 
 const RegistrWindow = () => {
   const [phone, setPhone] = useState<string>("");
@@ -41,45 +41,47 @@ const RegistrWindow = () => {
       dispatch(setPasswordReg(password));
       dispatch(setTelReg(phone));
       dispatch(setEntry(true));
-      dispatch(setSection("home"));
+      dispatch(setSection("main"));
 
       navigate("/");
     }
   };
 
   return (
-    <div className="reg__form">
-      <form className="reg" onSubmit={(e) => handleSubmit(e)}>
-        <div className="reg__name">
+    <div className={cls.reg__form}>
+      <form className={cls.reg} onSubmit={(e) => handleSubmit(e)}>
+        <div className={cls.reg__name}>
           <h2>Teknova</h2>
-          <img className="reg__logo" src={logoIcon} alt="" />
+          <img className={cls.reg__logo} src={logoIcon} alt="" />
         </div>
-        <div className="reg__text">
+        <div className={cls.reg__text}>
           Твоя техника — твой стиль. Начни с регистрации!
         </div>
-        <label htmlFor="phone" className="reg__input-wrappper">
+        <label htmlFor="phone" className={cls["reg__input-wrappper"]}>
           <input
             id="phone"
             value={phone}
-            className="reg__input"
+            className={cls.reg__input}
             type="text"
             onChange={changeEmail}
             placeholder="Номер телефона"
           />
-          {phoneError && <span className="reg__error">{phoneError}</span>}
+          {phoneError && <span className={cls.reg__error}>{phoneError}</span>}
         </label>
-        <label htmlFor="password" className="reg__input-wrappper">
+        <label htmlFor="password" className={cls["reg__input-wrappper"]}>
           <input
-            className="reg__input"
+            className={cls.reg__input}
             id="password"
             value={password}
             type="password"
             onChange={changePassword}
             placeholder="Пароль"
           />
-          {passwordError && <span className="reg__error">{passwordError}</span>}
+          {passwordError && (
+            <span className={cls.reg__error}>{passwordError}</span>
+          )}
         </label>
-        <button className="reg__button" type="submit">
+        <button className={cls.reg__button} type="submit">
           Регистрация
         </button>
       </form>

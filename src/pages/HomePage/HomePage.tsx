@@ -1,4 +1,5 @@
 import { useAppSelector } from "@app/Provider";
+import Navbar from "@widgets/Navbar/Navbar";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -17,7 +18,7 @@ const HomePage = () => {
   }, [entry, navigate]);
   return (
     <section className="home">
-      <h1>Home</h1>
+      <Navbar />
     </section>
   );
 };
