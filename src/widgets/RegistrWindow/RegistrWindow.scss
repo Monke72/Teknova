@@ -1,0 +1,84 @@
+.reg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 370px;
+  padding: 20px 40px 30px 40px;
+  border: 4px dashed var(--color-accent);
+  border-radius: 30px;
+  &::after {
+    content: "";
+    background-image: url("../../shared/assets/AppleFilled.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 10px;
+    top: -20px;
+  }
+  &::before {
+    content: "";
+    background-image: url("../../shared/assets/samsung.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    right: 10px;
+    bottom: -25px;
+    rotate: -20deg;
+  }
+
+  &__input {
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    &:focus-visible {
+      border: none;
+      outline: none;
+    }
+  }
+  &__input-wrappper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+  }
+
+  &__name {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    line-height: 1.1;
+    h2 {
+      color: var(--color-accent);
+    }
+  }
+
+  &__logo {
+    max-width: 40px;
+  }
+  &__button {
+    max-width: 120px;
+    padding: 10px 20px;
+    border: 0;
+    border-radius: 10px;
+    background-color: var(--color-accent);
+    color: var(--color-gray);
+    @include hover {
+      opacity: 0.7;
+    }
+  }
+  &__text {
+    font-weight: 600;
+    text-align: center;
+    padding: 10px 0 20px 0;
+  }
+  &__error {
+    font-size: 14px;
+    color: var(--color-accent-coral);
+    padding-top: 5px;
+  }
+}
