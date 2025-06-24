@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchProducts } from "../productsApi/productsApi";
+import { IProducts } from "@shared/types/globalTypes";
 
 export const loadProducts = createAsyncThunk(
   "product/loadProducts",
@@ -7,14 +8,20 @@ export const loadProducts = createAsyncThunk(
     return await fetchProducts();
   }
 );
+interface ProductSlice {
+  products: IProducts[];
+  loading: boolean;
+  error: string | null;
+}
+const initialState: ProductSlice = {
+  products: [],
+  loading: false,
+  error: null,
+};
 
 const productSlice = createSlice({
   name: "product",
-  initialState: {
-    products: [],
-    loading: false,
-    error: null,
-  },
+  initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder

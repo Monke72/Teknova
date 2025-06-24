@@ -1,5 +1,7 @@
 import { useAppDispatch, useAppSelector } from "@app/Provider";
 import { loadProducts } from "@entities/products/model/productsSlice";
+import Banner from "@widgets/Banner/Banner";
+import Brands from "@widgets/Brands/Brands";
 import Navbar from "@widgets/Navbar/Navbar";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -27,6 +29,8 @@ const HomePage = () => {
   return (
     <section className="home">
       <Navbar />
+      <Banner />
+      <Brands />
     </section>
   );
 };

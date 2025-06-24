@@ -1,0 +1,42 @@
+.brands {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-top: 100px;
+}
+
+.scroll-wrapper {
+  overflow: hidden;
+  width: 100%; /* окно просмотра */
+}
+
+.scroll-track {
+  display: flex;
+  width: fit-content;
+  animation: scroll 200s linear infinite;
+  transition: opacity 0.5s ease;
+}
+
+.scroll-wrapper:hover .scroll-track {
+  animation-play-state: paused;
+  opacity: 0.8; /* слегка затемняем для визуального эффекта паузы */
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.scroll-item {
+  flex: 0 0 auto;
+  margin-right: 50px;
+  white-space: nowrap;
+  font-size: 18px;
+  padding: 10px 20px;
+  background: #f3f3f3;
+  border-radius: 8px;
+}

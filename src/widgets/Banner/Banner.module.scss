@@ -1,0 +1,37 @@
+.banner {
+  padding-top: 200px;
+  top: 190px;
+  display: flex;
+  &__apple {
+    background-image: url("https://hi-stores.ru/upload/iblock/e59/ovpwok1liczhi5eupti71n4a5ci0w423.jpg");
+    width: 100%;
+    height: 500px;
+  }
+
+  &__samsung {
+    background-image: url(https://hi-stores.ru/upload/iblock/fdb/1q9dyxr6dfx6562vtncprop8it0b84xo.jpg);
+    height: 250px;
+  }
+
+  &__dyson {
+    background-image: url(https://hi-stores.ru/upload/iblock/24f/3ysp84fizhswer2dg6j3po5ly3lu14wx.jpg);
+    height: 250px;
+  }
+  &__wrapper {
+    width: 50%;
+  }
+}
+.banner__dyson,
+.banner__samsung,
+.banner__apple {
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: all 1s;
+  background-position: center;
+  @include hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+    cursor: pointer;
+    z-index: 1111;
+  }
+}
