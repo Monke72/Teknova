@@ -1,0 +1,44 @@
+.info {
+  padding-block: 120px;
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  &__title {
+    padding-bottom: 40px;
+  }
+
+  &__list {
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__item-title {
+    font-size: var(--font-size-xl);
+    color: var(--color-accent);
+    position: relative;
+    &::after {
+      content: "";
+      background: url("../../shared/assets/logo.svg");
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      background-repeat: no-repeat;
+      left: 0;
+      background-size: contain;
+      left: -40px;
+      top: 0;
+    }
+  }
+
+  &__image {
+    background-image: url("../../shared/assets/tecnovaShop.png");
+    background-position: center;
+    background-size: cover;
+    border-radius: 3%;
+  }
+}

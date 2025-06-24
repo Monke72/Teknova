@@ -1,0 +1,54 @@
+.brands {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-top: 100px;
+  &__title {
+    padding-bottom: 50px;
+  }
+}
+
+.scroll-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.scroll-track {
+  display: flex;
+  width: max-content; /* fit-content тоже подойдет */
+  animation: scroll 60s linear infinite;
+  transition: opacity 0.5s ease;
+}
+
+.scroll-wrapper:hover .scroll-track {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.scroll-item {
+  flex: 0 0 auto;
+  margin-right: 50px;
+  white-space: nowrap;
+  font-size: 18px;
+  padding: 13px 25px;
+  border-radius: 15px;
+  color: var(--color-gray);
+  &:nth-child(1n) {
+    background-color: var(--color-accent-coral);
+  }
+  &:nth-child(2n) {
+    background-color: var(--color-accent);
+  }
+  @include hover {
+    cursor: pointer;
+    opacity: 0.7;
+  }
+}
