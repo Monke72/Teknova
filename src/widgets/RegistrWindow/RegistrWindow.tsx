@@ -1,6 +1,6 @@
-import { useAppDispatch } from "@app/Provider";
+import { useAppDispatch } from "@shared/hooks/reduxHooks";
 import { setEntry, setPasswordReg, setMailReg } from "@features/Auth/slice";
-import { setSection } from "@features/Navigation/slice";
+import { setSection } from "@features/Navigation/model/slice";
 import { passwordValid } from "@shared/utils/passwordValid/passwordValid";
 import { validateEmail } from "@shared/utils/mailValid/mailValid";
 import React, { useState } from "react";

@@ -23,7 +23,7 @@
     position: relative;
     &::after {
       content: "";
-      background: url("../../shared/assets/logo.svg");
+      background: url("../../../../shared/assets/logo.svg");
       width: 40px;
       height: 40px;
       position: absolute;
@@ -36,7 +36,7 @@
   }
 
   &__image {
-    background-image: url("../../shared/assets/tecnovaShop.png");
+    background-image: url("../../../../shared/assets/tecnovaShop.png");
     background-position: center;
     background-size: cover;
     border-radius: 3%;

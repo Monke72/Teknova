@@ -1,6 +1,6 @@
 import RegistrWindow from "@widgets/RegistrWindow/RegistrWindow";
 import cls from "./RegistrPage.module.scss";
-import { useAppSelector } from "@app/Provider";
+import { useAppSelector } from "@shared/hooks/reduxHooks";
 import { Link } from "react-router-dom";
 
 const RegistrPage = () => {

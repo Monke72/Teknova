@@ -1,4 +1,4 @@
-import { useAppSelector } from "@app/Provider";
+import { useAppSelector } from "@shared/hooks/reduxHooks";
 import cls from "./Brands.module.scss";
 
 const Brands = () => {

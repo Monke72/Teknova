@@ -1,43 +1,50 @@
 import logoIcon from "@shared/assets/logo.svg";
-
 import cls from "./navbar.module.scss";
 import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "@app/Provider";
-import { NavSectionType, setSection } from "@features/Navigation/slice";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useAppSelector } from "@shared/hooks/reduxHooks";
+import { NavSectionType } from "@features/Navigation/model/slice";
 
 const sectionMap: Record<string, NavSectionType> = {
   Главная: "main",
   Каталог: "catalog",
   Корзина: "basket",
-  "О нас": "info",
+  "О нас": "about",
+};
+
+const sectionToPathMap: Record<NavSectionType, string> = {
+  main: "/",
+  catalog: "/catalog",
+  basket: "/basket",
+  about: "/about",
 };
 
 const Navbar = () => {
   const [hasShadow, setHasShadow] = useState(false);
-  const sectionHome = useAppSelector((state) => state.navSection.section);
-  console.log(sectionHome);
-
-  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const currentSection = useAppSelector((state) => state.navSection.section);
+  const sect = useAppSelector((state) => state.navSection.section);
+  console.log("sect", sect);
 
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 10;
-      setHasShadow((prev) => {
-        if (prev !== isScrolled) {
-          return isScrolled;
-        }
-        return prev; // не вызывает перерендер
-      });
+      setHasShadow((prev) => (prev !== isScrolled ? isScrolled : prev));
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const onClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const text = e.currentTarget.textContent?.trim();
-    if (text && sectionMap[text]) {
-      dispatch(setSection(sectionMap[text]));
+  const onClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    sectionKey: NavSectionType
+  ) => {
+    e.preventDefault();
+    const path = sectionToPathMap[sectionKey];
+    if (location.pathname !== path) {
+      navigate(path);
     }
   };
 
@@ -49,14 +56,14 @@ const Navbar = () => {
           <img className={cls["nav__img"]} src={logoIcon} alt="" />
         </div>
         <ul className={cls["nav__list"]}>
-          {Object.entries(sectionMap).map(([label, section]) => (
-            <li className={cls["nav__item"]} key={section}>
+          {Object.entries(sectionMap).map(([label, sectionKey]) => (
+            <li className={cls["nav__item"]} key={sectionKey}>
               <a
+                href={sectionToPathMap[sectionKey]}
+                onClick={(e) => onClick(e, sectionKey)}
                 className={`${cls.nav__link} ${
-                  sectionHome === section ? cls.active : ""
+                  currentSection === sectionKey ? cls.active : ""
                 }`}
-                href="#"
-                onClick={(e) => onClick(e)}
               >
                 {label}
               </a>
@@ -67,5 +74,4 @@ const Navbar = () => {
     </div>
   );
 };
-
 export default Navbar;

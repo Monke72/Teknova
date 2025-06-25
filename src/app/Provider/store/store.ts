@@ -11,7 +11,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import userReducer from "@features/Auth/slice";
-import { navSectionReducer } from "@features/Navigation/slice";
+import { navSectionReducer } from "@features/Navigation/model/slice";
 import productsReducer from "@entities/products/model/productsSlice";
 
 // Создаем rootReducer из всех слайсов

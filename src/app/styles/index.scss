@@ -23,7 +23,7 @@ h6 {
   color: #222;
 }
 .container {
-  max-width: 1230px;
+  max-width: clamp(71.875rem, 56.25rem + 20.833vw, 81.25rem);
   padding-inline: 40px;
   margin-inline: auto;
 }
