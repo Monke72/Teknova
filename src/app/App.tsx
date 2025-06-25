@@ -3,7 +3,7 @@ import "./styles/index.scss";
 import HomePage from "@pages/HomePage";
 import { Route, Routes, useLocation } from "react-router-dom";
 import NotFound from "@shared/ui/NotFound/NotFound";
-import CatalogPage from "@pages/CatalogPage/CatalogPage";
+import CatalogPage from "@pages/CatalogPage";
 import BasketPage from "@pages/BasketPage/BasketPage";
 import AboutPage from "@pages/AboutPage/AboutPage";
 import { useEffect } from "react";

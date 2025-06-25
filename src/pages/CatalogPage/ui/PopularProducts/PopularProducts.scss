@@ -1,0 +1,10 @@
+.popular {
+  padding-top: 120px;
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+  &__title {
+    padding-bottom: 25px;
+  }
+}

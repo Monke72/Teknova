@@ -1,0 +1,31 @@
+.search {
+  padding-top: 170px;
+  display: flex;
+  justify-content: center;
+
+  &__input {
+    padding: 25px 40px;
+    border-radius: 20px;
+    width: 100%;
+    &::placeholder {
+      font-size: 18px;
+    }
+  }
+  .input__wrapper {
+    width: 70%;
+    position: relative;
+    &::after {
+      content: "";
+      background: url("../../../shared/assets/searchIcon.svg");
+      background-size: contain;
+      background-color: transparent;
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      z-index: 111;
+      right: clamp(2.188rem, 0.625rem + 2.083vw, 3.125rem);
+      top: 50%;
+      transform: translate(50%, -50%);
+    }
+  }
+}

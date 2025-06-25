@@ -4,6 +4,7 @@ export interface IUserState {
   mail: string;
 }
 export interface IProducts {
+  id: number;
   name: string;
   price: number;
   product: string;
@@ -11,4 +12,6 @@ export interface IProducts {
   division: "уход" | "электроника";
   producer: string;
   sale?: number;
+  image: string;
+  popular: boolean;
 }

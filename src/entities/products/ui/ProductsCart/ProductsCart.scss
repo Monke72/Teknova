@@ -1,0 +1,48 @@
+.cart {
+  background-color: #fff;
+  padding: 30px;
+  max-width: 290px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  @include hover {
+    .cart__image {
+      transform: scale(1.05);
+    }
+  }
+  &__image {
+    transition: all 1s;
+
+    max-height: 200px;
+  }
+
+  &__price {
+    padding-top: 10px;
+    display: flex;
+    gap: 5px;
+  }
+
+  &__name {
+    padding-bottom: 15px;
+    line-height: 1;
+  }
+
+  &__add {
+    padding: 10px 20px;
+    background-color: var(--color-accent);
+    color: var(--color-gray);
+    border-radius: 10px;
+    transition: all 0.4s;
+    z-index: 111;
+    @include hover {
+      opacity: 0.8;
+    }
+  }
+  &__dis-av {
+    opacity: 0.7;
+    font-size: 16px;
+    text-decoration: line-through;
+  }
+}
