@@ -3,6 +3,11 @@ export interface IUserState {
   entry: boolean;
   mail: string;
 }
+export enum ProductCartStyle {
+  All = "all",
+  Popular = "popular",
+  Basket = "basket",
+}
 export interface IProducts {
   id: number;
   name: string;
@@ -14,4 +19,5 @@ export interface IProducts {
   sale?: number;
   image: string;
   popular: boolean;
+  styleType?: ProductCartStyle;
 }

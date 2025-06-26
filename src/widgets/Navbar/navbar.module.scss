@@ -48,3 +48,15 @@
     border: none;
   }
 }
+.dropdown {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+
+  &__link {
+    color: var(--color-accent-coral);
+    @include hover {
+      color: var(--color-accent);
+    }
+  }
+}

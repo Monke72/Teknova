@@ -1,8 +1,9 @@
 .popular {
-  padding-top: 120px;
+  padding-block: 80px;
   &__list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
   }
   &__title {
     padding-bottom: 25px;

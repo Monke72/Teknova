@@ -1,8 +1,5 @@
 .cart {
   background-color: #fff;
-  padding: 30px;
-  max-width: 290px;
-  border-radius: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -45,4 +42,15 @@
     font-size: 16px;
     text-decoration: line-through;
   }
+}
+.cart.popular {
+  padding: 30px;
+  max-width: 290px;
+  border-radius: 20px;
+}
+
+.cart.all {
+  max-width: clamp(15.625rem, 12.5rem + 4.167vw, 17.5rem);
+  border-radius: 20px;
+  padding: clamp(1.25rem, 0.729rem + 0.694vw, 1.563rem);
 }

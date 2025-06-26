@@ -1,0 +1,15 @@
+.all {
+  &__sider-prod {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 70px;
+    gap: clamp(1.25rem, -0.625rem + 2.5vw, 1.875rem);
+  }
+
+  &__products {
+    max-width: 850px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+    gap: clamp(0.625rem, -0.313rem + 1.25vw, 0.938rem);
+  }
+}

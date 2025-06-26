@@ -1,5 +1,5 @@
-import "./SearchProducts.scss";
-const SearchProducts = () => {
+import "./SearchInput.scss";
+const SearchInput = () => {
   return (
     <div className="search container">
       <div className="input__wrapper">
@@ -9,4 +9,4 @@ const SearchProducts = () => {
   );
 };
 
-export default SearchProducts;
+export default SearchInput;

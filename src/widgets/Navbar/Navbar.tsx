@@ -20,7 +20,7 @@ const sectionToPathMap: Record<NavSectionType, string> = {
 };
 
 const Navbar = () => {
-  const [hasShadow, setHasShadow] = useState(false);
+  const [hasShadow, setHasShadow] = useState<boolean>(false);
   const navigate = useNavigate();
   const location = useLocation();
   const currentSection = useAppSelector((state) => state.navSection.section);
