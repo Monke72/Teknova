@@ -1,42 +1,40 @@
 import { useAppSelector } from "@shared/hooks/reduxHooks";
 import Checkbox from "@shared/ui/Checkbox/Checkbox";
 import "./SearchSider.scss";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { changeInput } from "@shared/utils/changeInput/changeInput";
+import { IProducts } from "@shared/types/globalTypes";
+import useDebounce from "@shared/hooks/useDebounce";
 
-const SearchSider = ({ filteredProducts, setFilteredProducts }) => {
-  const isFirstRender = useRef(true);
+interface ISider {
+  searchValue: string;
+  setFilteredProducts: React.Dispatch<React.SetStateAction<IProducts[]>>;
+}
+
+const SearchSider = ({ searchValue, setFilteredProducts }: ISider) => {
+  // Дебаунсим searchValue с задержкой 300мс
+  const debouncedSearchValue = useDebounce(searchValue, 300);
+
   const products = useAppSelector((state) => state.productsList.products);
-
   const productsBrands = Array.from(new Set(products.map((el) => el.producer)));
-  //show
+
+  // Показывать/скрывать фильтры
   const [showAviability, setShowAviability] = useState<boolean>(true);
   const [showPrice, setShowPrice] = useState<boolean>(false);
   const [showProducer, setShowProducer] = useState<boolean>(false);
-  //price
+
+  // Диапазон цены
   const maxPrice = Math.max(...products.map((product) => product.price));
   const minPrice = Math.min(...products.map((product) => product.price));
   const [inputMinPrice, setInputMinPrice] = useState<number | null>(null);
   const [inputMaxPrice, setInputMaxPrice] = useState<number | null>(null);
 
-  useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
-
-    if (inputMinPrice !== null && !isNaN(inputMinPrice)) {
-      setInputMaxPrice(inputMinPrice + 1);
-    } else {
-      setInputMaxPrice(null); // сбрасываем, если min пустой
-    }
-  }, [inputMinPrice]);
-
-  //aviab
+  // Фильтр по наличию
   const [allAviability, setAllAviability] = useState<boolean>(false);
   const [aviability, setAviability] = useState<boolean>(true);
   const [notAviability, setNotAviability] = useState<boolean>(true);
-  //brands
+
+  // Выбор брендов
   const [selectedBrands, setSelectedBrands] = useState<Record<string, boolean>>(
     {}
   );
@@ -47,28 +45,33 @@ const SearchSider = ({ filteredProducts, setFilteredProducts }) => {
     }));
   };
 
-  const searchByParametrs = () => {
+  // Функция фильтрации по параметрам
+  const searchByParametrs = (search: string) => {
     let result = [...products];
 
-    //Фильтр по наличию
+    if (search.trim() !== "") {
+      const lowerSearch = search.toLowerCase();
+      result = result.filter((product) =>
+        product.name.toLowerCase().includes(lowerSearch)
+      );
+    }
+
     result = result.filter((product) => {
       if (aviability && product.aviability) return true;
       if (notAviability && !product.aviability) return true;
-      if (!aviability && !notAviability) return true; // если ничего не выбрано
+      if (!aviability && !notAviability) return true; // если ничего не выбрано — показываем все
       return false;
     });
 
-    //Фильтр по цене
     result = result.filter((product) => {
-      const min = inputMinPrice ?? minPrice; // если inputMinPrice null или undefined — берем minPrice
-      const max = inputMaxPrice ?? maxPrice; // если inputMaxPrice null или undefined — берем maxPrice
+      const min = inputMinPrice ?? minPrice;
+      const max = inputMaxPrice ?? maxPrice;
 
       if (product.price < min) return false;
       if (product.price > max) return false;
       return true;
     });
 
-    //Фильтр по бренду
     if (!allAviability) {
       const activeBrands = Object.entries(selectedBrands)
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -84,8 +87,31 @@ const SearchSider = ({ filteredProducts, setFilteredProducts }) => {
 
     setFilteredProducts(result);
   };
-  console.log(filteredProducts);
-  //очистка
+
+  // Автоматический запуск фильтра при изменении параметров
+  useEffect(() => {
+    searchByParametrs(debouncedSearchValue);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    debouncedSearchValue,
+    aviability,
+    notAviability,
+    allAviability,
+    selectedBrands,
+    inputMinPrice,
+    inputMaxPrice,
+    products,
+  ]);
+
+  // Очистка фильтров
+  const clearFilters = () => {
+    setInputMinPrice(null);
+    setInputMaxPrice(null);
+    setAviability(true);
+    setNotAviability(true);
+    setAllAviability(false);
+    setSelectedBrands({});
+  };
 
   return (
     <div className="sider">
@@ -114,6 +140,7 @@ const SearchSider = ({ filteredProducts, setFilteredProducts }) => {
             </div>
           )}
         </li>
+
         <li className="sider__item">
           <button
             onClick={() => setShowPrice((prev) => !prev)}
@@ -135,7 +162,7 @@ const SearchSider = ({ filteredProducts, setFilteredProducts }) => {
                 onChange={(e) => changeInput(e, setInputMaxPrice)}
                 value={inputMaxPrice ?? ""}
                 className="sider__price"
-                min={inputMinPrice ? inputMinPrice : minPrice}
+                min={inputMinPrice ?? minPrice}
                 max={maxPrice}
                 type="number"
                 placeholder={`до ${maxPrice}`}
@@ -143,6 +170,7 @@ const SearchSider = ({ filteredProducts, setFilteredProducts }) => {
             </div>
           )}
         </li>
+
         <li className="sider__item">
           <button
             onClick={() => setShowProducer((prev) => !prev)}
@@ -172,9 +200,9 @@ const SearchSider = ({ filteredProducts, setFilteredProducts }) => {
           )}
         </li>
       </ul>
-      <button className="sider__btn clear">Очистить</button>
-      <button className="sider__btn" onClick={searchByParametrs}>
-        Применить
+
+      <button className="sider__btn clear" onClick={clearFilters}>
+        Очистить
       </button>
     </div>
   );

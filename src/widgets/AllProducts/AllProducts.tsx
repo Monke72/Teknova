@@ -1,21 +1,20 @@
 import ProductsCart from "@entities/products/ui/ProductsCart/ProductsCart";
-import SearchProducts from "@features/SearchProducts/ui/SearchInput/SearchInput";
+import SearchInput from "@features/SearchProducts/ui/SearchInput/SearchInput";
 import SearchSider from "@features/SearchProducts/ui/SearchSider/SearchSider";
-import { useAppSelector } from "@shared/hooks/reduxHooks";
-import { ProductCartStyle } from "@shared/types/globalTypes";
+import { IProducts, ProductCartStyle } from "@shared/types/globalTypes";
 import "./AllProducts.scss";
 import { useState } from "react";
 
 const AllProducts = () => {
-  const products = useAppSelector((state) => state.productsList.products);
-  const [filteredProducts, setFilteredProducts] = useState(products);
+  const [searchValue, setSearchValue] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState<IProducts[]>([]);
 
   return (
     <section className="all container">
-      <SearchProducts />
+      <SearchInput searchValue={searchValue} setSearchValue={setSearchValue} />
       <div className="all__sider-prod">
         <SearchSider
-          filteredProducts={filteredProducts}
+          searchValue={searchValue}
           setFilteredProducts={setFilteredProducts}
         />
         <div className="all__products">
