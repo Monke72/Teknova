@@ -4,6 +4,7 @@
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
+
   @include hover {
     .cart__image {
       transform: scale(1.05);
@@ -50,7 +51,20 @@
 }
 
 .cart.all {
-  max-width: clamp(15.625rem, 12.5rem + 4.167vw, 17.5rem);
+  height: 350px;
+  width: clamp(15.625rem, 12.5rem + 4.167vw, 17.5rem);
   border-radius: 20px;
   padding: clamp(1.25rem, 0.729rem + 0.694vw, 1.563rem);
+}
+.cart.dis {
+  opacity: 0.7;
+  @include hover {
+    cursor: default;
+  }
+  .cart__add {
+    cursor: default;
+    @include hover {
+      opacity: unset;
+    }
+  }
 }

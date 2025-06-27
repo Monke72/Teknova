@@ -24,7 +24,6 @@
     padding: 0 20px;
   }
   &__btn {
-    margin-top: 30px;
     padding: 20px;
     width: 100%;
     display: flex;
@@ -44,7 +43,7 @@
   }
 }
 .brandss {
-  max-height: 300px;
+  max-height: 200px;
   overflow-y: auto;
 }
 .sider__dropdown.price {
@@ -56,4 +55,7 @@
   @include hover {
     color: var(--color-gray);
   }
+}
+.sider__btn.clear {
+  background-color: var(--color-accent-coral);
 }

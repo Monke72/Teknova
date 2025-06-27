@@ -1,7 +1,14 @@
 import { IProducts, ProductCartStyle } from "@shared/types/globalTypes";
 import cls from "./ProductsCart.module.scss";
 
-const ProductsCart = ({ name, price, sale, image, styleType }: IProducts) => {
+const ProductsCart = ({
+  name,
+  price,
+  sale,
+  image,
+  styleType,
+  aviability,
+}: IProducts) => {
   const prevPrice = price / (1 - sale / 100);
   const formattedPrice = price.toLocaleString("ru-Ru");
 
@@ -11,6 +18,7 @@ const ProductsCart = ({ name, price, sale, image, styleType }: IProducts) => {
         ${styleType === ProductCartStyle.All ? cls.all : ""} 
         ${styleType === ProductCartStyle.Basket ? cls.basket : ""}
         ${styleType === ProductCartStyle.Popular ? cls.popular : ""}
+        ${!aviability ? cls.dis : ""}
       `}
     >
       <img className={cls["cart__image"]} src={image} alt="" />
@@ -23,7 +31,9 @@ const ProductsCart = ({ name, price, sale, image, styleType }: IProducts) => {
           )}
         </div>
         <p className={cls["cart__name"]}>{name}</p>{" "}
-        <button className={cls["cart__add"]}>В корзину</button>
+        <button disabled={!aviability} className={cls["cart__add"]}>
+          В корзину
+        </button>
       </div>
     </div>
   );

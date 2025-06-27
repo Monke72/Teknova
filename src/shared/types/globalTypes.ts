@@ -9,6 +9,7 @@ export enum ProductCartStyle {
   Basket = "basket",
 }
 export interface IProducts {
+  aviability: boolean;
   id: number;
   name: string;
   price: number;
