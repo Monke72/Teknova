@@ -1,9 +1,9 @@
-import ProductsCart from "@entities/products/ui/ProductsCart/ProductsCart";
 import SearchInput from "@features/SearchProducts/ui/SearchInput/SearchInput";
 import SearchSider from "@features/SearchProducts/ui/SearchSider/SearchSider";
 import { IProducts, ProductCartStyle } from "@shared/types/globalTypes";
 import "./AllProducts.scss";
 import { useState } from "react";
+import ProductCardWithDetails from "@features/ProductCardWithDetails/ui/ProductCardWithDetails";
 
 const AllProducts = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -24,10 +24,10 @@ const AllProducts = () => {
             </div>
           )}
           {filteredProducts.map((el) => (
-            <ProductsCart
+            <ProductCardWithDetails
               key={el.id}
               styleType={ProductCartStyle.All}
-              {...el}
+              el={el}
             />
           ))}
         </div>

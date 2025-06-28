@@ -1,5 +1,8 @@
 import { IProducts, ProductCartStyle } from "@shared/types/globalTypes";
 import cls from "./ProductsCart.module.scss";
+interface IProductCart extends IProducts {
+  setOpenModal?: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
 const ProductsCart = ({
   name,
@@ -8,7 +11,8 @@ const ProductsCart = ({
   image,
   styleType,
   aviability,
-}: IProducts) => {
+  setOpenModal,
+}: IProductCart) => {
   const prevPrice = price / (1 - sale / 100);
   const formattedPrice = price.toLocaleString("ru-Ru");
 
@@ -21,7 +25,12 @@ const ProductsCart = ({
         ${!aviability ? cls.dis : ""}
       `}
     >
-      <img className={cls["cart__image"]} src={image} alt="" />
+      <img
+        onClick={() => setOpenModal(true)}
+        className={cls["cart__image"]}
+        src={image}
+        alt=""
+      />
 
       <div className={cls["cart__info"]}>
         <div className={cls["cart__price"]}>

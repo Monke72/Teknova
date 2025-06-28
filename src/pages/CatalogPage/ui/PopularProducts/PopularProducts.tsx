@@ -1,7 +1,8 @@
 import { useAppSelector } from "@shared/hooks/reduxHooks";
 import cls from "./PopularProducts.module.scss";
-import ProductsCart from "@entities/products/ui/ProductsCart/ProductsCart";
+
 import { ProductCartStyle } from "@shared/types/globalTypes";
+import ProductCardWithDetails from "@features/ProductCardWithDetails/ui/ProductCardWithDetails";
 
 const PopularProducts = () => {
   const products = useAppSelector((state) => state.productsList.products);
@@ -12,10 +13,10 @@ const PopularProducts = () => {
         {products
           .filter((el) => el.popular)
           .map((el) => (
-            <ProductsCart
+            <ProductCardWithDetails
               styleType={ProductCartStyle.Popular}
               key={el.id}
-              {...el}
+              el={el}
             />
           ))}
       </ul>
