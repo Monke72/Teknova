@@ -14,6 +14,7 @@ import userReducer from "@features/Auth/slice";
 import { navSectionReducer } from "@features/Navigation/model/slice";
 import productsReducer from "@entities/products/model/productsSlice";
 import basketReducer from "@features/basket/basketSlice/slice";
+import textReducer from "@shared/store/slices/textSlice";
 
 // Создаем rootReducer из всех слайсов
 export const rootReducer = combineReducers({
@@ -21,6 +22,7 @@ export const rootReducer = combineReducers({
   navSection: navSectionReducer,
   productsList: productsReducer,
   basket: basketReducer,
+  text: textReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

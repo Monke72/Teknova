@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@shared/hooks/reduxHooks";
 import { NavSectionType, setSection } from "@features/Navigation";
 import { loadProducts } from "@entities/products/model/productsSlice";
+import ScrollToTop from "@shared/ui/ScrollToTop/ScrollToTop";
 
 const pathToSectionMap: Record<string, NavSectionType> = {
   "/": "main",
@@ -38,6 +39,7 @@ function App() {
   }, [dispatch, entry]);
   return (
     <>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/catalog" element={<CatalogPage />} />

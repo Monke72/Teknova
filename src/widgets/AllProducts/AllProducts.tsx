@@ -2,17 +2,24 @@ import SearchInput from "@features/SearchProducts/ui/SearchInput/SearchInput";
 import SearchSider from "@features/SearchProducts/ui/SearchSider/SearchSider";
 import { IProducts, ProductCartStyle } from "@shared/types/globalTypes";
 import cls from "./AllProducts.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProductCardWithDetails from "@features/ProductCardWithDetails/ui/ProductCardWithDetails";
-import { useAppSelector } from "@shared/hooks/reduxHooks";
+import { useAppDispatch, useAppSelector } from "@shared/hooks/reduxHooks";
+import { clearText } from "@shared/store/slices/textSlice";
 
 const AllProducts = () => {
   const [searchValue, setSearchValue] = useState("");
   const products = useAppSelector((state) => state.productsList.products);
   const [filteredProducts, setFilteredProducts] =
     useState<IProducts[]>(products);
-
-  console.log(filteredProducts);
+  const text = useAppSelector((state) => state.text.text);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    if (text) {
+      setSearchValue(text);
+      dispatch(clearText());
+    }
+  }, [text, dispatch]);
 
   return (
     <section className={`${cls.all} container`}>
