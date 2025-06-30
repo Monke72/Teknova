@@ -4,10 +4,15 @@ import { IProducts, ProductCartStyle } from "@shared/types/globalTypes";
 import "./AllProducts.scss";
 import { useState } from "react";
 import ProductCardWithDetails from "@features/ProductCardWithDetails/ui/ProductCardWithDetails";
+import { useAppSelector } from "@shared/hooks/reduxHooks";
 
 const AllProducts = () => {
   const [searchValue, setSearchValue] = useState("");
-  const [filteredProducts, setFilteredProducts] = useState<IProducts[]>([]);
+  const products = useAppSelector((state) => state.productsList.products);
+  const [filteredProducts, setFilteredProducts] =
+    useState<IProducts[]>(products);
+
+  console.log(filteredProducts);
 
   return (
     <section className="all container">

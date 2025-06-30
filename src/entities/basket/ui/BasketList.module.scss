@@ -1,0 +1,148 @@
+.basket {
+  font-size: 18px;
+  max-width: 1800px;
+  padding-inline: 50px;
+  margin-inline: auto;
+  padding-top: 180px;
+  padding-bottom: 100px;
+
+  &__clear {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+  }
+
+  &__clear-btn {
+    transition: all 0.3s;
+    @include hover {
+      color: var(--color-accent);
+    }
+  }
+
+  &__items {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+  }
+
+  &__check {
+    min-width: 300px;
+    height: max-content;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    border: 1px solid var(--color-accent-light);
+    padding: 20px;
+  }
+  &__table {
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid var(--color-accent-light);
+  }
+}
+.product {
+  display: flex;
+  &__image {
+    max-width: 120px;
+  }
+  &__more {
+    align-items: center;
+    img {
+      max-width: 30px;
+    }
+  }
+  &__info {
+    align-items: start;
+  }
+
+  &__item {
+    display: flex;
+    background-color: #fff;
+    width: 100%;
+    justify-content: space-between;
+    padding: 20px;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--color-accent-light);
+    }
+  }
+
+  &__price {
+    font-weight: 500;
+  }
+
+  &__delete {
+    &-image {
+      max-width: 25px;
+    }
+  }
+}
+.products {
+  &__text {
+    border-bottom: 1px solid var(--color-accent);
+    cursor: pointer;
+    @include hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__clear {
+    display: flex;
+    align-items: center;
+    transition: all 0.3s;
+    img {
+      max-width: 45px;
+    }
+    @include hover {
+      color: var(--color-accent);
+      transform: scale(1.05);
+    }
+  }
+  &__basket {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+    border-bottom: 1px solid var(--color-accent-light);
+    width: 100%;
+  }
+  &__wrapper {
+    padding-inline: 20px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.check {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    color: #222;
+  }
+
+  &__buy {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: var(--color-accent);
+    padding: 15px;
+    color: var(--color-gray);
+    transition: all 0.5s;
+    @include hover {
+      opacity: 0.8;
+      transform: scale(1.01);
+    }
+  }
+}
+.product__more,
+.product__info {
+  display: flex;
+  gap: 30px;
+}

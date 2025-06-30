@@ -28,6 +28,8 @@ const SearchSider = ({ searchValue, setFilteredProducts }: ISider) => {
   const minPrice = Math.min(...products.map((product) => product.price));
   const [inputMinPrice, setInputMinPrice] = useState<number | null>(null);
   const [inputMaxPrice, setInputMaxPrice] = useState<number | null>(null);
+  const debouncedMinPrice = useDebounce(inputMinPrice, 500);
+  const debouncedMaxPrice = useDebounce(inputMaxPrice, 500);
 
   // Фильтр по наличию
   const [allAviability, setAllAviability] = useState<boolean>(false);
@@ -46,7 +48,11 @@ const SearchSider = ({ searchValue, setFilteredProducts }: ISider) => {
   };
 
   // Функция фильтрации по параметрам
-  const searchByParametrs = (search: string) => {
+  const searchByParametrs = (
+    search: string,
+    minPriceFilter: number | null = null,
+    maxPriceFilter: number | null = null
+  ) => {
     let result = [...products];
 
     if (search.trim() !== "") {
@@ -59,18 +65,16 @@ const SearchSider = ({ searchValue, setFilteredProducts }: ISider) => {
     result = result.filter((product) => {
       if (aviability && product.aviability) return true;
       if (notAviability && !product.aviability) return true;
-      if (!aviability && !notAviability) return true; // если ничего не выбрано — показываем все
+      if (!aviability && !notAviability) return true;
       return false;
     });
 
-    result = result.filter((product) => {
-      const min = inputMinPrice ?? minPrice;
-      const max = inputMaxPrice ?? maxPrice;
+    const min = minPriceFilter ?? minPrice;
+    const max = maxPriceFilter ?? maxPrice;
 
-      if (product.price < min) return false;
-      if (product.price > max) return false;
-      return true;
-    });
+    result = result.filter(
+      (product) => product.price >= min && product.price <= max
+    );
 
     if (!allAviability) {
       const activeBrands = Object.entries(selectedBrands)
@@ -90,7 +94,11 @@ const SearchSider = ({ searchValue, setFilteredProducts }: ISider) => {
 
   // Автоматический запуск фильтра при изменении параметров
   useEffect(() => {
-    searchByParametrs(debouncedSearchValue);
+    searchByParametrs(
+      debouncedSearchValue,
+      debouncedMinPrice,
+      debouncedMaxPrice
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     debouncedSearchValue,
@@ -98,8 +106,8 @@ const SearchSider = ({ searchValue, setFilteredProducts }: ISider) => {
     notAviability,
     allAviability,
     selectedBrands,
-    inputMinPrice,
-    inputMaxPrice,
+    debouncedMinPrice,
+    debouncedMaxPrice,
     products,
   ]);
 

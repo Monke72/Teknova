@@ -1,10 +1,14 @@
 import { IProducts, ProductCartStyle } from "@shared/types/globalTypes";
 import cls from "./ProductsCart.module.scss";
+import { useAppSelector } from "@shared/hooks/reduxHooks";
+import { formattedPrice } from "@shared/utils/formattedPrice/formattedPrice";
 interface IProductCart extends IProducts {
   setOpenModal?: React.Dispatch<React.SetStateAction<boolean>>;
+  toggleProduct?: (id: number) => void;
 }
 
 const ProductsCart = ({
+  id,
   name,
   price,
   sale,
@@ -12,9 +16,11 @@ const ProductsCart = ({
   styleType,
   aviability,
   setOpenModal,
+  toggleProduct,
 }: IProductCart) => {
   const prevPrice = price / (1 - sale / 100);
-  const formattedPrice = price.toLocaleString("ru-Ru");
+  const basket = useAppSelector((state) => state.basket.basket);
+  const inBasket = basket.includes(id);
 
   return (
     <div
@@ -34,14 +40,18 @@ const ProductsCart = ({
 
       <div className={cls["cart__info"]}>
         <div className={cls["cart__price"]}>
-          <h3 className={cls["cart__price-title"]}>{formattedPrice}Р</h3>
+          <h3 className={cls["cart__price-title"]}>{formattedPrice(price)}Р</h3>
           {sale && (
             <h3 className={cls["cart__dis-av"]}> {prevPrice.toFixed(0)}</h3>
           )}
         </div>
         <p className={cls["cart__name"]}>{name}</p>{" "}
-        <button disabled={!aviability} className={cls["cart__add"]}>
-          В корзину
+        <button
+          disabled={!aviability}
+          className={`${cls["cart__add"]} ${inBasket ? cls.accent : ""}`}
+          onClick={() => toggleProduct(id)}
+        >
+          {inBasket ? <>Удалить из корзины</> : <>Добавить в корзину</>}
         </button>
       </div>
     </div>
