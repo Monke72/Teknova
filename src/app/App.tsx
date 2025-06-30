@@ -5,7 +5,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import NotFound from "@shared/ui/NotFound/NotFound";
 import CatalogPage from "@pages/CatalogPage";
 import BasketPage from "@pages/BasketPage/BasketPage";
-import AboutPage from "@pages/AboutPage/AboutPage";
+import AboutPage from "@pages/AboutPage";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@shared/hooks/reduxHooks";
 import { NavSectionType, setSection } from "@features/Navigation";
