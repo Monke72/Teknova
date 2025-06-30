@@ -1,6 +1,6 @@
 import { useAppSelector } from "@shared/hooks/reduxHooks";
 import Checkbox from "@shared/ui/Checkbox/Checkbox";
-import "./SearchSider.scss";
+import cls from "./SearchSider.module.scss";
 import { useEffect, useState } from "react";
 import { changeInput } from "@shared/utils/changeInput/changeInput";
 import { IProducts } from "@shared/types/globalTypes";
@@ -122,17 +122,19 @@ const SearchSider = ({ searchValue, setFilteredProducts }: ISider) => {
   };
 
   return (
-    <div className="sider">
-      <ul className="sider__list">
-        <li className="sider__item">
+    <div className={cls.sider}>
+      <ul className={cls.sider__list}>
+        <li className={cls.sider__item}>
           <button
             onClick={() => setShowAviability((prev) => !prev)}
-            className={`sider__button ${showAviability ? "active" : ""}`}
+            className={`${cls["sider__button"]} ${
+              showAviability ? cls["active"] : ""
+            }`}
           >
             Наличие
           </button>
           {showAviability && (
-            <div className="sider__dropdown">
+            <div className={cls.sider__dropdown}>
               <Checkbox
                 onChange={() => setAviability((prev) => !prev)}
                 id="aviability"
@@ -149,19 +151,21 @@ const SearchSider = ({ searchValue, setFilteredProducts }: ISider) => {
           )}
         </li>
 
-        <li className="sider__item">
+        <li className={cls.sider__item}>
           <button
             onClick={() => setShowPrice((prev) => !prev)}
-            className={`sider__button ${showPrice ? "active" : ""}`}
+            className={`${cls["sider__button"]} ${
+              showPrice ? cls["active"] : ""
+            }`}
           >
             Цена
           </button>
           {showPrice && (
-            <div className="sider__dropdown price">
+            <div className={`${cls["sider__dropdown"]} ${cls["price"]}`}>
               <input
                 onChange={(e) => changeInput(e, setInputMinPrice)}
                 value={inputMinPrice ?? ""}
-                className="sider__price"
+                className={cls.sider__price}
                 min={minPrice}
                 type="number"
                 placeholder={`от ${minPrice}`}
@@ -169,7 +173,7 @@ const SearchSider = ({ searchValue, setFilteredProducts }: ISider) => {
               <input
                 onChange={(e) => changeInput(e, setInputMaxPrice)}
                 value={inputMaxPrice ?? ""}
-                className="sider__price"
+                className={cls.sider__price}
                 min={inputMinPrice ?? minPrice}
                 max={maxPrice}
                 type="number"
@@ -179,15 +183,17 @@ const SearchSider = ({ searchValue, setFilteredProducts }: ISider) => {
           )}
         </li>
 
-        <li className="sider__item">
+        <li className={cls.sider__item}>
           <button
             onClick={() => setShowProducer((prev) => !prev)}
-            className={`sider__button ${showProducer ? "active" : ""}`}
+            className={`${cls["sider__button"]} ${
+              showProducer ? cls["active"] : ""
+            }`}
           >
             Производитель
           </button>
           {showProducer && (
-            <div className="sider__dropdown brandss">
+            <div className={`${cls["sider__dropdown"]} ${cls["brandss"]}`}>
               <Checkbox
                 id="all__aviability"
                 checked={allAviability}
@@ -209,7 +215,10 @@ const SearchSider = ({ searchValue, setFilteredProducts }: ISider) => {
         </li>
       </ul>
 
-      <button className="sider__btn clear" onClick={clearFilters}>
+      <button
+        className={`${cls["sider__btn"]} ${cls["clear"]}`}
+        onClick={clearFilters}
+      >
         Очистить
       </button>
     </div>

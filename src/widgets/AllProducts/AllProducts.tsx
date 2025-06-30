@@ -1,7 +1,7 @@
 import SearchInput from "@features/SearchProducts/ui/SearchInput/SearchInput";
 import SearchSider from "@features/SearchProducts/ui/SearchSider/SearchSider";
 import { IProducts, ProductCartStyle } from "@shared/types/globalTypes";
-import "./AllProducts.scss";
+import cls from "./AllProducts.module.scss";
 import { useState } from "react";
 import ProductCardWithDetails from "@features/ProductCardWithDetails/ui/ProductCardWithDetails";
 import { useAppSelector } from "@shared/hooks/reduxHooks";
@@ -15,17 +15,17 @@ const AllProducts = () => {
   console.log(filteredProducts);
 
   return (
-    <section className="all container">
+    <section className={`${cls.all} container`}>
       <SearchInput searchValue={searchValue} setSearchValue={setSearchValue} />
-      <div className="all__sider-prod">
+      <div className={cls["all__sider-prod"]}>
         <SearchSider
           searchValue={searchValue}
           setFilteredProducts={setFilteredProducts}
         />
-        <div className="all__products">
+        <div className={cls["all__products"]}>
           {!filteredProducts.length && (
-            <div className="all__not-found">
-              <h1 className="not__found-title">Ничего не найдено 🤔</h1>
+            <div className={cls["all__not-found"]}>
+              <h1 className={cls["not__found-title"]}>Ничего не найдено 🤔</h1>
             </div>
           )}
           {filteredProducts.map((el) => (

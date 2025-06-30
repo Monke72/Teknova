@@ -1,4 +1,4 @@
-import "./SearchInput.scss";
+import cls from "./SearchInput.module.scss";
 interface ISearchInput {
   searchValue: string;
   setSearchValue: React.Dispatch<React.SetStateAction<string>>;
@@ -10,13 +10,13 @@ const SearchInput = ({ searchValue, setSearchValue }: ISearchInput) => {
   };
 
   return (
-    <div className="search container">
-      <div className="input__wrapper">
+    <div className={`${cls.search} container`}>
+      <div className={cls["input__wrapper"]}>
         <input
           onChange={inputChange}
           type="text"
           value={searchValue}
-          className="search__input"
+          className={cls["search__input"]}
           placeholder="Поиск"
         />
       </div>
