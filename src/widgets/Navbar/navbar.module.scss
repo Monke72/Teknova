@@ -3,6 +3,12 @@
   padding-block: 30px;
   position: relative;
 
+  &__name {
+    font-size: 24px;
+    @include tablet {
+      font-size: 20px;
+    }
+  }
   &__wrapper {
     position: fixed;
     width: 100%;
@@ -37,6 +43,9 @@
   }
   &__img {
     max-width: 50px;
+    @include tablet {
+      max-width: 40px;
+    }
   }
 }
 .shadow {

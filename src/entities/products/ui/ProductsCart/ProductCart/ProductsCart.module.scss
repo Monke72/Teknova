@@ -34,8 +34,12 @@
     border-radius: 10px;
     transition: all 0.4s;
     z-index: 111;
+
     @include hover {
       opacity: 0.8;
+    }
+    @include tablet {
+      line-height: 1.2;
     }
   }
   &__dis-av {
@@ -48,6 +52,9 @@
   padding: 30px;
   max-width: 290px;
   border-radius: 20px;
+  @include tablet {
+    padding: clamp(1.25rem, 0.005rem + 2.494vw, 1.875rem);
+  }
 }
 
 .cart.all {
@@ -55,6 +62,11 @@
   width: clamp(15.625rem, 12.5rem + 4.167vw, 17.5rem);
   border-radius: 20px;
   padding: clamp(1.25rem, 0.729rem + 0.694vw, 1.563rem);
+  @include tablet {
+    width: clamp(12.188rem, 9.697rem + 4.988vw, 13.438rem);
+    padding: 15px;
+    height: unset;
+  }
 }
 .cart.dis {
   opacity: 0.7;

@@ -5,12 +5,26 @@
   margin-inline: auto;
   padding-top: 180px;
   padding-bottom: 100px;
+  @include tablet {
+    padding-inline: clamp(1.25rem, -1.25rem + 5vw, 2.5rem);
+  }
+  @include mobile {
+    padding-top: 140px;
+  }
+
+  &__title {
+    padding-bottom: 50px;
+    @include mobile {
+      padding-bottom: clamp(1.25rem, 0.208rem + 3.333vw, 1.875rem);
+    }
+  }
 
   &__clear {
     position: absolute;
     top: 40%;
     left: 50%;
     transform: translate(-50%, 50%);
+    white-space: nowrap;
   }
 
   &__clear-btn {
@@ -24,17 +38,25 @@
     display: flex;
     justify-content: space-between;
     gap: 50px;
+    @include tablet {
+      gap: clamp(1.25rem, -1.25rem + 5vw, 2.5rem);
+    }
+    @include mobile {
+      flex-direction: column;
+    }
   }
 
   &__check {
-    min-width: 300px;
+    min-width: clamp(12.5rem, 8.036rem + 8.929vw, 18.75rem);
     height: max-content;
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 20px;
     border: 1px solid var(--color-accent-light);
     padding: 20px;
+    @include tablet {
+    }
   }
   &__table {
     width: 100%;
@@ -46,11 +68,20 @@
   display: flex;
   &__image {
     max-width: 120px;
+    @include tablet {
+      max-width: clamp(6.25rem, 4.375rem + 3.75vw, 7.188rem);
+    }
+    @include mobile {
+      max-width: clamp(4.375rem, 2.292rem + 6.667vw, 5.625rem);
+    }
   }
   &__more {
     align-items: center;
     img {
       max-width: 30px;
+    }
+    @include tablet {
+      align-items: start;
     }
   }
   &__info {
@@ -63,6 +94,7 @@
     width: 100%;
     justify-content: space-between;
     padding: 20px;
+    gap: 10px;
 
     &:not(:last-child) {
       border-bottom: 1px solid var(--color-accent-light);
@@ -77,6 +109,9 @@
     &-image {
       max-width: 25px;
     }
+  }
+  &__name {
+    line-height: 1.1;
   }
 }
 .products {
@@ -108,6 +143,9 @@
     padding: 30px;
     border-bottom: 1px solid var(--color-accent-light);
     width: 100%;
+    @include tablet {
+      padding: clamp(1.25rem, 0.208rem + 3.333vw, 1.875rem);
+    }
   }
   &__wrapper {
     padding-inline: 20px;
@@ -125,6 +163,10 @@
     align-items: center;
     font-weight: 500;
     color: #222;
+    gap: 10px;
+  }
+  &__price {
+    font-size: 24px;
   }
 
   &__buy {
@@ -135,6 +177,7 @@
     padding: 15px;
     color: var(--color-gray);
     transition: all 0.5s;
+    line-height: 1.2;
     @include hover {
       opacity: 0.8;
       transform: scale(1.01);
@@ -145,4 +188,7 @@
 .product__info {
   display: flex;
   gap: 30px;
+  @include tablet {
+    gap: clamp(0.938rem, -0.313rem + 2.5vw, 1.563rem);
+  }
 }

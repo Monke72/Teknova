@@ -14,7 +14,7 @@ const BasketList = ({ clear, deleteProduct }) => {
 
   return (
     <section className={cls.basket}>
-      <h1>Корзина</h1>
+      <h1 className={cls.basket__title}>Корзина</h1>
       <div className={cls.basket__wrapper}>
         {!productsInBasket.length ? (
           <div className={cls.basket__clear}>

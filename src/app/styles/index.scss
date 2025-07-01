@@ -26,4 +26,8 @@ h6 {
   max-width: clamp(71.875rem, 56.25rem + 20.833vw, 81.25rem);
   padding-inline: 40px;
   margin-inline: auto;
+  @include tablet {
+    max-width: clamp(43.75rem, 0.164rem + 87.282vw, 65.625rem);
+    padding-inline: clamp(0.938rem, -0.93rem + 3.741vw, 1.875rem);
+  }
 }

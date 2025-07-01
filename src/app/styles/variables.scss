@@ -10,4 +10,9 @@
   --font-size-l: 16px;
   --font-size-xl: 24px;
   --font-size-xxl: 32px;
+  @include tablet {
+    --font-size-xxl: 28px;
+    --font-size-xl: 20px;
+    --font-size-l: 14px;
+  }
 }

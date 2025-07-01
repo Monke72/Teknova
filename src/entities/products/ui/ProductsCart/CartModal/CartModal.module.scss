@@ -25,6 +25,9 @@
   }
   &__image {
     max-width: 400px;
+    @include tablet {
+      max-width: 300px;
+    }
   }
   &__button {
     padding: 10px 20px;

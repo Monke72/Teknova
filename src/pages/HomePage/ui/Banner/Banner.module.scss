@@ -1,21 +1,24 @@
 .banner {
   padding-top: 200px;
-  top: 190px;
   display: flex;
+  @include tablet {
+    padding-top: 170px;
+  }
   &__apple {
     background-image: url("https://hi-stores.ru/upload/iblock/e59/ovpwok1liczhi5eupti71n4a5ci0w423.jpg");
     width: 100%;
     height: 500px;
+    @include tablet {
+      height: clamp(18.75rem, 6.297rem + 24.938vw, 25rem);
+    }
   }
 
   &__samsung {
     background-image: url(https://hi-stores.ru/upload/iblock/fdb/1q9dyxr6dfx6562vtncprop8it0b84xo.jpg);
-    height: 250px;
   }
 
   &__dyson {
     background-image: url(https://hi-stores.ru/upload/iblock/24f/3ysp84fizhswer2dg6j3po5ly3lu14wx.jpg);
-    height: 250px;
   }
   &__wrapper {
     width: 50%;
@@ -32,5 +35,12 @@
     opacity: 0.8;
     transform: scale(1.05);
     cursor: pointer;
+  }
+}
+.banner__dyson,
+.banner__samsung {
+  height: 250px;
+  @include tablet {
+    height: clamp(9.375rem, 3.148rem + 12.469vw, 12.5rem);
   }
 }
