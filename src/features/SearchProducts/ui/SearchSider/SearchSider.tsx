@@ -1,10 +1,11 @@
-import { useAppSelector } from "@shared/hooks/reduxHooks";
+import { useAppDispatch, useAppSelector } from "@shared/hooks/reduxHooks";
 import Checkbox from "@shared/ui/Checkbox/Checkbox";
 import cls from "./SearchSider.module.scss";
 import { useEffect, useState } from "react";
 import { changeInput } from "@shared/utils/changeInput/changeInput";
 import { IProducts } from "@shared/types/globalTypes";
 import useDebounce from "@shared/hooks/useDebounce";
+import { clearObject } from "@shared/store/slices/objectSlice";
 
 interface ISider {
   searchValue: string;
@@ -12,6 +13,7 @@ interface ISider {
 }
 
 const SearchSider = ({ searchValue, setFilteredProducts }: ISider) => {
+  const dispatch = useAppDispatch();
   // Дебаунсим searchValue с задержкой 300мс
   const debouncedSearchValue = useDebounce(searchValue, 300);
 
@@ -40,6 +42,15 @@ const SearchSider = ({ searchValue, setFilteredProducts }: ISider) => {
   const [selectedBrands, setSelectedBrands] = useState<Record<string, boolean>>(
     {}
   );
+  const object = useAppSelector((state) => state.object.object);
+
+  useEffect(() => {
+    if (Object.keys(object).length > 0) {
+      setSelectedBrands(object);
+      dispatch(clearObject());
+    }
+  }, [dispatch, object]);
+
   const toggleBrand = (brand: string) => {
     setSelectedBrands((prev) => ({
       ...prev,

@@ -11,13 +11,15 @@ import { useAppSelector } from "@shared/hooks/reduxHooks";
 const CatalogPage = () => {
   const [category, setCategory] = useState<CategorieType>("popular");
   const text = useAppSelector((state) => state.text.text);
+  const object = useAppSelector((state) => state.object.object);
   console.log(text);
 
   useEffect(() => {
-    if (text) {
+    if (text || Object.keys(object).length > 0) {
       setCategory("all");
     }
-  }, [text]);
+  }, [object, text]);
+
   return (
     <>
       <Navbar />
