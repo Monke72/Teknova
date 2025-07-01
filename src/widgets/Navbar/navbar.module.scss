@@ -2,6 +2,13 @@
   display: flex;
   padding-block: 30px;
   position: relative;
+  @include mobile {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding-block: 25px;
+  }
 
   &__name {
     font-size: 24px;
@@ -29,6 +36,13 @@
     top: 50%;
     transform: translate(-50%, -50%);
     gap: clamp(1.875rem, 0.833rem + 1.389vw, 2.5rem);
+    @include tablet {
+      gap: clamp(1.25rem, 0.005rem + 2.494vw, 1.875rem);
+    }
+    @include mobile {
+      position: static;
+      transform: unset;
+    }
   }
 
   &__link {

@@ -1,5 +1,5 @@
 .categories {
-  padding-top: 170px;
+  padding-top: var(--size-padding-nav);
   color: var(--color-accent);
   &__list {
     display: flex;

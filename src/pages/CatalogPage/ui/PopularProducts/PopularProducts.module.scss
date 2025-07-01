@@ -8,6 +8,9 @@
       grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
       gap: clamp(0.625rem, -0.62rem + 2.494vw, 1.25rem);
     }
+    @include mobile {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
   &__title {
     padding-bottom: 25px;

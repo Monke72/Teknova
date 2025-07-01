@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import ProductCardWithDetails from "@features/ProductCardWithDetails/ui/ProductCardWithDetails";
 import { useAppDispatch, useAppSelector } from "@shared/hooks/reduxHooks";
 import { clearText } from "@shared/store/slices/textSlice";
+import { useIsWidth } from "@shared/hooks/useIsWidth";
 
 const AllProducts = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -21,14 +22,40 @@ const AllProducts = () => {
     }
   }, [text, dispatch]);
 
+  //mobile
+  const isMobile = useIsWidth(799);
+  const [openSider, setOpenSider] = useState<boolean>(false);
+
   return (
     <section className={`${cls.all} container`}>
-      <SearchInput searchValue={searchValue} setSearchValue={setSearchValue} />
-      <div className={cls["all__sider-prod"]}>
-        <SearchSider
+      {isMobile ? (
+        <SearchInput
+          openSider={openSider}
+          setOpenSider={setOpenSider}
           searchValue={searchValue}
-          setFilteredProducts={setFilteredProducts}
+          setSearchValue={setSearchValue}
+          isMobile={isMobile}
         />
+      ) : (
+        <SearchInput
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+        />
+      )}
+      <div className={cls["all__sider-prod"]}>
+        {!isMobile && (
+          <SearchSider
+            searchValue={searchValue}
+            setFilteredProducts={setFilteredProducts}
+          />
+        )}
+        {isMobile && openSider && (
+          <SearchSider
+            searchValue={searchValue}
+            setFilteredProducts={setFilteredProducts}
+          />
+        )}
+
         <div className={cls["all__products"]}>
           {!filteredProducts.length && (
             <div className={cls["all__not-found"]}>

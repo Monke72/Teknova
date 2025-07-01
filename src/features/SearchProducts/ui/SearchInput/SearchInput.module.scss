@@ -3,6 +3,21 @@
   display: flex;
   justify-content: center;
 
+  &__filter {
+    padding: 10px 15px;
+    border: 3px dashed var(--color-accent);
+    max-height: 50px;
+    border-radius: 10px;
+    transition: all 0.5s;
+    img {
+      width: 30px;
+    }
+    @include hover {
+      background-color: var(--color-accent);
+      border: 3px solid var(--color-gray-alt);
+    }
+  }
+
   &__input {
     padding: 25px 40px;
     border-radius: 20px;
@@ -13,7 +28,14 @@
   }
   .input__wrapper {
     width: 60%;
-    position: relative;
+
+    @include mobile {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      width: 100%;
+      position: relative;
+    }
     &::after {
       content: "";
       background: url("../../../shared/assets/searchIcon.svg");
@@ -27,5 +49,13 @@
       top: 50%;
       transform: translate(50%, -50%);
     }
+  }
+}
+.search__filter.active {
+  background-color: var(--color-accent);
+  border: 3px solid var(--color-gray-alt);
+  transition: all 0.4s;
+  @include hover {
+    opacity: 0.8;
   }
 }

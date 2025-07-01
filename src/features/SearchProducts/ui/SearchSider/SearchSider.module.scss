@@ -8,6 +8,17 @@
   @include tablet {
     max-width: 250px;
   }
+  @include mobile {
+    position: absolute;
+    width: clamp(15.625rem, 10.417rem + 16.667vw, 18.75rem);
+    max-width: unset;
+    top: 0;
+    z-index: 99;
+    left: 0;
+    -webkit-box-shadow: 8px 9px 24px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 8px 9px 24px 0px rgba(66, 68, 90, 1);
+    box-shadow: 8px 9px 24px 0px rgba(66, 68, 90, 1);
+  }
 
   &__button {
     font-size: 18px;

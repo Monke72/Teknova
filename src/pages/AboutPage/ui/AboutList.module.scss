@@ -1,5 +1,5 @@
 .about {
-  padding-top: 150px;
+  padding-top: var(--size-padding-nav);
   font-size: 16px;
   @include tablet {
     font-size: clamp(0.875rem, 0.626rem + 0.499vw, 1rem);
@@ -12,6 +12,9 @@
 
   &__center {
     padding-top: 40px;
+    @include mobile {
+      padding-top: 25px;
+    }
   }
   &__subtitle-wrapper {
     display: grid;
@@ -21,6 +24,11 @@
     @include tablet {
       gap: 15px;
       padding-top: 30px;
+    }
+    @include mobile {
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 80px;
     }
   }
   &__info__wrapper {

@@ -1,5 +1,6 @@
 .all {
   &__sider-prod {
+    position: relative;
     display: flex;
     justify-content: space-between;
     padding-top: 70px;
@@ -20,6 +21,10 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: end;
+    }
+    @include mobile {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
   }
 }

@@ -10,6 +10,9 @@ body {
 }
 h1 {
   font-size: var(--font-size-xxl);
+  @include mobile {
+    line-height: 1.2;
+  }
 }
 
 h1,
@@ -29,5 +32,9 @@ h6 {
   @include tablet {
     max-width: clamp(43.75rem, 0.164rem + 87.282vw, 65.625rem);
     padding-inline: clamp(0.938rem, -0.93rem + 3.741vw, 1.875rem);
+  }
+  @include mobile {
+    max-width: clamp(28.75rem, 0.625rem + 90vw, 45.625rem);
+    padding-inline: 15px;
   }
 }

@@ -4,12 +4,15 @@
   position: relative;
   margin-top: 100px;
   @include tablet {
-    margin-top: 80px;
+    margin-top: var(--size-padding-block);
   }
   &__title {
     padding-bottom: 50px;
     @include tablet {
       padding-bottom: 30px;
+    }
+    @include mobile {
+      padding-bottom: 20px;
     }
   }
 }
@@ -59,5 +62,10 @@
   }
   @include tablet {
     margin-right: clamp(2.188rem, 0.942rem + 2.494vw, 2.813rem);
+  }
+  @include mobile {
+    margin-right: clamp(1.25rem, 0.208rem + 3.333vw, 1.875rem);
+    font-size: 16px;
+    padding: 10px 20px;
   }
 }

@@ -12,8 +12,10 @@
   }
   &__image {
     transition: all 1s;
-
     max-height: 200px;
+    @include mobile {
+      max-width: 170px;
+    }
   }
 
   &__price {
@@ -55,6 +57,10 @@
   @include tablet {
     padding: clamp(1.25rem, 0.005rem + 2.494vw, 1.875rem);
   }
+  @include mobile {
+    width: 100%;
+    max-width: unset;
+  }
 }
 
 .cart.all {
@@ -66,6 +72,9 @@
     width: clamp(12.188rem, 9.697rem + 4.988vw, 13.438rem);
     padding: 15px;
     height: unset;
+  }
+  @include mobile {
+    width: 100%;
   }
 }
 .cart.dis {

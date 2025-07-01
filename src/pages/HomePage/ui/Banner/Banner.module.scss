@@ -1,8 +1,9 @@
 .banner {
-  padding-top: 200px;
+  padding-top: var(--size-padding-nav);
   display: flex;
-  @include tablet {
-    padding-top: 170px;
+
+  @include mobile {
+    display: block;
   }
   &__apple {
     background-image: url("https://hi-stores.ru/upload/iblock/e59/ovpwok1liczhi5eupti71n4a5ci0w423.jpg");
@@ -10,6 +11,9 @@
     height: 500px;
     @include tablet {
       height: clamp(18.75rem, 6.297rem + 24.938vw, 25rem);
+    }
+    @include mobile {
+      height: clamp(13.75rem, 5.417rem + 26.667vw, 18.75rem);
     }
   }
 
@@ -22,6 +26,10 @@
   }
   &__wrapper {
     width: 50%;
+    @include mobile {
+      width: 100%;
+      display: flex;
+    }
   }
 }
 .banner__dyson,
@@ -42,5 +50,9 @@
   height: 250px;
   @include tablet {
     height: clamp(9.375rem, 3.148rem + 12.469vw, 12.5rem);
+  }
+  @include mobile {
+    width: 50%;
+    height: clamp(9.375rem, 4.167rem + 16.667vw, 12.5rem);
   }
 }
