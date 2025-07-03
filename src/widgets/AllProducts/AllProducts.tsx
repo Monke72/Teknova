@@ -47,6 +47,7 @@ const AllProducts = () => {
       <div className={cls["all__sider-prod"]}>
         {!isMobile && (
           <SearchSider
+            className="desktop"
             searchValue={searchValue}
             setFilteredProducts={setFilteredProducts}
           />
@@ -54,6 +55,7 @@ const AllProducts = () => {
         {isMobile && (
           <SearchSider
             openSider={openSider}
+            className="mobile"
             searchValue={searchValue}
             setFilteredProducts={setFilteredProducts}
           />

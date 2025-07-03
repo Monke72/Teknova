@@ -10,6 +10,7 @@ import { clearObject } from "@shared/store/slices/objectSlice";
 interface ISider {
   searchValue: string;
   setFilteredProducts: React.Dispatch<React.SetStateAction<IProducts[]>>;
+  className: string;
   openSider?: boolean;
 }
 
@@ -17,6 +18,7 @@ const SearchSider = ({
   searchValue,
   setFilteredProducts,
   openSider,
+  className,
 }: ISider) => {
   const dispatch = useAppDispatch();
   // Дебаунсим searchValue с задержкой 300мс
@@ -138,7 +140,11 @@ const SearchSider = ({
   };
 
   return (
-    <div className={`${cls.sider} ${openSider ? cls.open : cls.close}`}>
+    <div
+      className={`${cls.sider} ${cls[className]} ${
+        openSider ? cls.open : cls.close
+      }`}
+    >
       <ul className={cls.sider__list}>
         <li className={cls.sider__item}>
           <button
