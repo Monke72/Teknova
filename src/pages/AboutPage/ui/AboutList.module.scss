@@ -9,6 +9,12 @@
       line-height: 1.4;
     }
   }
+  &__subtitle {
+    padding-bottom: 10px;
+    @include mobile-s {
+      padding-bottom: 0;
+    }
+  }
   &__list {
     @include mobile-s {
       padding-block: 10px;

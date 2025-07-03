@@ -4,10 +4,24 @@
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
+  @include mobile-s {
+    padding: 15px;
+    max-width: clamp(9.375rem, -0.268rem + 42.857vw, 13.125rem);
+  }
+  .cart__image {
+    @include mobile-s {
+      max-width: clamp(6.875rem, -1.161rem + 35.714vw, 10rem);
+    }
+  }
 
   @include hover {
     .cart__image {
       transform: scale(1.05);
+    }
+  }
+  &__price-title {
+    @include mobile-s {
+      font-size: 18px;
     }
   }
   &__image {
@@ -27,6 +41,11 @@
   &__name {
     padding-bottom: 15px;
     line-height: 1;
+    @include mobile-s {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
 
   &__add {
@@ -43,11 +62,19 @@
     @include tablet {
       line-height: 1.2;
     }
+    @include mobile-s {
+      line-height: 1.2;
+      font-size: 14px;
+      padding: 10px 20px;
+    }
   }
   &__dis-av {
     opacity: 0.7;
     font-size: 16px;
     text-decoration: line-through;
+    @include mobile-s {
+      font-size: 14px;
+    }
   }
 }
 .cart.popular {
@@ -60,6 +87,15 @@
   @include mobile {
     width: 100%;
     max-width: unset;
+  }
+  @include mobile-s {
+    padding: 15px;
+    max-width: clamp(9.375rem, -0.268rem + 42.857vw, 13.125rem);
+  }
+  .cart__image {
+    @include mobile-s {
+      max-width: clamp(6.875rem, -1.161rem + 35.714vw, 10rem);
+    }
   }
 }
 

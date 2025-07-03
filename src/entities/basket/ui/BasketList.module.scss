@@ -32,6 +32,15 @@
     @include hover {
       color: var(--color-accent);
     }
+    @include mobile-s {
+      font-size: 14px;
+    }
+  }
+  &__clear-title {
+    @include mobile-s {
+      font-size: 22px;
+      line-height: 1;
+    }
   }
 
   &__items {
@@ -126,6 +135,7 @@
     cursor: pointer;
     @include mobile-s {
       line-height: 1.2;
+      padding-bottom: 5px;
     }
     @include hover {
       opacity: 0.8;

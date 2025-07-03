@@ -1,10 +1,10 @@
 import { IProducts, ProductCartStyle } from "@shared/types/globalTypes";
 import cls from "./ProductsCart.module.scss";
-import { useAppSelector } from "@shared/hooks/reduxHooks";
 import { formattedPrice } from "@shared/utils/formattedPrice/formattedPrice";
 interface IProductCart extends IProducts {
   setOpenModal?: React.Dispatch<React.SetStateAction<boolean>>;
   toggleProduct?: (id: number) => void;
+  inBasket: boolean;
 }
 
 const ProductsCart = ({
@@ -17,10 +17,9 @@ const ProductsCart = ({
   aviability,
   setOpenModal,
   toggleProduct,
+  inBasket,
 }: IProductCart) => {
   const prevPrice = price / (1 - sale / 100);
-  const basket = useAppSelector((state) => state.basket.basket);
-  const inBasket = basket.includes(id);
 
   return (
     <div

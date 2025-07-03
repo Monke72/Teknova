@@ -1,13 +1,23 @@
 .modal {
   width: max-content !important;
+
   &__wrapper {
     display: flex;
     flex-direction: column;
     padding: 10px;
+    @include mobile-s {
+      padding: clamp(0.313rem, -0.208rem + 1.667vw, 0.625rem);
+    }
   }
   &__title {
     color: var(--color-accent);
     padding-top: 10px;
+    @include mobile {
+      padding: 0;
+    }
+    @include mobile-s {
+      font-size: clamp(1.125rem, 0.813rem + 1vw, 1.313rem);
+    }
   }
 
   &__main {
@@ -15,6 +25,14 @@
     padding-top: 30px;
     gap: 30px;
     padding-top: 30px;
+    @include mobile {
+      gap: 20px;
+      padding-top: 15px;
+    }
+    @include mobile-s {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   &__info {
@@ -22,11 +40,19 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 10px;
   }
   &__image {
     max-width: 400px;
     @include tablet {
       max-width: 300px;
+    }
+    @include mobile {
+      max-width: clamp(11.25rem, 3.958rem + 23.333vw, 15.625rem);
+    }
+    @include mobile-s {
+      max-width: 150px;
+      max-height: 150px;
     }
   }
   &__button {
@@ -38,11 +64,22 @@
     @include hover {
       opacity: 0.7;
     }
+    @include mobile-s {
+      font-size: 16px;
+      padding: 8px 20px;
+    }
   }
 }
 .info {
   &__title {
     padding-bottom: 10px;
+    @include mobile {
+      font-size: 18px;
+    }
+    @include mobile-s {
+      font-size: clamp(1rem, 0.792rem + 0.667vw, 1.125rem);
+      padding-bottom: 5px;
+    }
   }
 
   &__item {
@@ -55,9 +92,24 @@
   flex-grow: 1;
   border-bottom: 1px dashed black;
   padding: 0 30px;
-  top: -17px;
+  top: -7px;
+  @include mobile-s {
+    top: -5px;
+  }
 }
 .sale {
   color: var(--color-accent-coral);
   font-weight: 500;
+}
+.info__item-title,
+.info__category {
+  @include mobile {
+    font-size: 16px;
+  }
+  @include mobile-s {
+    font-size: clamp(0.875rem, 0.667rem + 0.667vw, 1rem);
+  }
+}
+.modal__button.active {
+  background-color: var(--color-accent-coral);
 }

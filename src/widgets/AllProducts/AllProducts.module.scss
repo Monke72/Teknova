@@ -8,6 +8,9 @@
     @include tablet {
       padding-top: clamp(2.813rem, 0.945rem + 3.741vw, 3.75rem);
     }
+    @include mobile-s {
+      padding-top: 35px;
+    }
   }
 
   &__products {
@@ -25,6 +28,9 @@
     @include mobile {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    @include mobile-s {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 }

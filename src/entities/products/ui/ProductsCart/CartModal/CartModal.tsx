@@ -8,10 +8,18 @@ interface ICartModal {
   el: IProducts;
   openModal: boolean;
   setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+  inBasket: boolean;
+  toggleProduct: (id: number) => void;
 }
 
-const CartModal = ({ el, openModal, setOpenModal }: ICartModal) => {
-  const { name, image, producer, price, category, sale } = el;
+const CartModal = ({
+  el,
+  openModal,
+  setOpenModal,
+  inBasket,
+  toggleProduct,
+}: ICartModal) => {
+  const { name, image, producer, price, category, sale, id } = el;
 
   return (
     <Modal
@@ -30,25 +38,25 @@ const CartModal = ({ el, openModal, setOpenModal }: ICartModal) => {
               <h3 className={cls["info__title"]}>Характеристики</h3>
               <ul className={cls["info__list"]}>
                 <li className={cls["info__item"]}>
-                  <div className={cls["info__title"]}>Производитель</div>
+                  <div className={cls["info__item-title"]}>Производитель</div>
                   <div className={cls["item__dots"]} />
                   <div className={cls["info__category"]}>{producer}</div>
                 </li>
                 <li className={cls["info__item"]}>
-                  <div className={cls["info__title"]}>Цена</div>
+                  <div className={cls["info__item-title"]}>Цена</div>
                   <div className={cls["item__dots"]} />
                   <div className={cls["info__category"]}>
                     {formattedPrice(price)}P
                   </div>
                 </li>
                 <li className={cls["info__item"]}>
-                  <div className={cls["info__title"]}>Категория</div>
+                  <div className={cls["info__item-title"]}>Категория</div>
                   <div className={cls["item__dots"]} />
                   <div className={cls["info__category"]}>{category}</div>
                 </li>
                 {sale && (
                   <li className={cls["info__item"]}>
-                    <div className={cls["info__title"]}>Скидка</div>
+                    <div className={cls["info__item-title"]}>Скидка</div>
                     <div className={cls["item__dots"]} />
                     <div className={`${cls["info__category"]} ${cls["sale"]}`}>
                       {sale}%
@@ -57,7 +65,14 @@ const CartModal = ({ el, openModal, setOpenModal }: ICartModal) => {
                 )}
               </ul>
             </div>
-            <button className={cls["modal__button"]}>Добавить в корзину</button>
+            <button
+              className={`${cls["modal__button"]} ${
+                inBasket ? cls.active : ""
+              }`}
+              onClick={() => toggleProduct(id)}
+            >
+              {inBasket ? <>Удалить из корзины</> : <>Добавить в корзину</>}
+            </button>
           </div>
         </div>
       </div>

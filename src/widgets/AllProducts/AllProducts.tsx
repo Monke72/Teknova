@@ -51,8 +51,9 @@ const AllProducts = () => {
             setFilteredProducts={setFilteredProducts}
           />
         )}
-        {isMobile && openSider && (
+        {isMobile && (
           <SearchSider
+            openSider={openSider}
             searchValue={searchValue}
             setFilteredProducts={setFilteredProducts}
           />

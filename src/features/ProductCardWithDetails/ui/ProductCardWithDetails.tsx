@@ -18,6 +18,7 @@ const ProductCardWithDetails = ({ el, styleType }: IProductCardWithDetails) => {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const basket = useAppSelector((state) => state.basket.basket);
   const dispatch = useAppDispatch();
+  const inBasket = basket.includes(el.id);
 
   const toggleProduct = (id: number) => {
     if (basket.includes(id)) {
@@ -34,8 +35,15 @@ const ProductCardWithDetails = ({ el, styleType }: IProductCardWithDetails) => {
         styleType={styleType}
         setOpenModal={setOpenModal}
         toggleProduct={toggleProduct}
+        inBasket={inBasket}
       />
-      <CartModal openModal={openModal} setOpenModal={setOpenModal} el={el} />
+      <CartModal
+        toggleProduct={toggleProduct}
+        inBasket={inBasket}
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+        el={el}
+      />
     </>
   );
 };

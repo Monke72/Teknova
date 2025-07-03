@@ -1,5 +1,8 @@
 .popular {
   padding-block: 80px;
+  @include mobile {
+    padding-block: 45px;
+  }
   &__list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));

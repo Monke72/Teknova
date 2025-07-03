@@ -16,6 +16,9 @@
       background-color: var(--color-accent);
       border: 3px solid var(--color-gray-alt);
     }
+    @include mobile-s {
+      padding: 7px 10px;
+    }
   }
 
   &__input {
@@ -24,6 +27,9 @@
     width: 100%;
     &::placeholder {
       font-size: 18px;
+    }
+    @include mobile-s {
+      padding: 15px 25px;
     }
   }
   .input__wrapper {
