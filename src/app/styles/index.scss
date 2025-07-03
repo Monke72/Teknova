@@ -1,11 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap");
 @import "./variables.scss";
+@import "../../shared/styles/reset.scss";
 body {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   background-color: var(--color-gray);
   font-size: 16px;
   color: var(--color-gray-alt);
+}
+h1 {
+  font-size: var(--font-size-xxl);
+  @include mobile {
+    line-height: 1.2;
+  }
 }
 
 h1,
@@ -19,7 +26,18 @@ h6 {
   color: #222;
 }
 .container {
-  max-width: 1230px;
-  padding-inline: 30px;
+  max-width: clamp(71.875rem, 56.25rem + 20.833vw, 81.25rem);
+  padding-inline: 40px;
   margin-inline: auto;
+  @include tablet {
+    max-width: clamp(43.75rem, 0.164rem + 87.282vw, 65.625rem);
+    padding-inline: clamp(0.938rem, -0.93rem + 3.741vw, 1.875rem);
+  }
+  @include mobile {
+    max-width: clamp(28.75rem, 0.625rem + 90vw, 45.625rem);
+    padding-inline: 15px;
+  }
+  @include mobile-s {
+    max-width: clamp(21.25rem, 2.768rem + 82.143vw, 28.438rem);
+  }
 }

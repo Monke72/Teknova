@@ -5,7 +5,7 @@ import { RootState } from "../index";
 const persistConfig: PersistConfig<RootState> = {
   key: "root",
   storage,
-  whitelist: ["userReg", "navSection"], // ключи редьюсеров, которые хотим сохранять
+  whitelist: ["userReg", "navSection", "basket"], // ключи редьюсеров, которые хотим сохранять
 };
 
 export default persistConfig;

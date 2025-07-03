@@ -1,0 +1,233 @@
+.basket {
+  font-size: 18px;
+  max-width: 1800px;
+  padding-inline: 50px;
+  margin-inline: auto;
+  padding-top: var(--size-padding-nav);
+  padding-bottom: 100px;
+  @include tablet {
+    padding-inline: clamp(1.25rem, -1.25rem + 5vw, 2.5rem);
+  }
+  @include mobile-s {
+    padding-inline: clamp(0.938rem, 0.134rem + 3.571vw, 1.25rem);
+  }
+
+  &__title {
+    padding-bottom: 50px;
+    @include mobile {
+      padding-bottom: clamp(1.25rem, 0.208rem + 3.333vw, 1.875rem);
+    }
+  }
+
+  &__clear {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    white-space: nowrap;
+  }
+
+  &__clear-btn {
+    transition: all 0.3s;
+    @include hover {
+      color: var(--color-accent);
+    }
+    @include mobile-s {
+      font-size: 14px;
+    }
+  }
+  &__clear-title {
+    @include mobile-s {
+      font-size: 22px;
+      line-height: 1;
+    }
+  }
+
+  &__items {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    @include tablet {
+      gap: clamp(1.25rem, -1.25rem + 5vw, 2.5rem);
+    }
+    @include mobile {
+      flex-direction: column;
+    }
+  }
+
+  &__check {
+    min-width: clamp(12.5rem, 8.036rem + 8.929vw, 18.75rem);
+    height: max-content;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 1px solid var(--color-accent-light);
+    padding: 20px;
+    @include tablet {
+    }
+  }
+  &__table {
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid var(--color-accent-light);
+  }
+}
+.product {
+  display: flex;
+  &__image {
+    max-width: 120px;
+    @include tablet {
+      max-width: clamp(6.25rem, 4.375rem + 3.75vw, 7.188rem);
+    }
+    @include mobile {
+      max-width: clamp(4.375rem, 2.292rem + 6.667vw, 5.625rem);
+    }
+  }
+  &__more {
+    align-items: center;
+    img {
+      max-width: 30px;
+    }
+    @include tablet {
+      align-items: start;
+    }
+  }
+  &__info {
+    align-items: start;
+  }
+
+  &__item {
+    display: flex;
+    background-color: #fff;
+    width: 100%;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 10px;
+    @include mobile-s {
+      padding: clamp(0.938rem, 0.134rem + 3.571vw, 1.25rem) 3px;
+    }
+
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--color-accent-light);
+    }
+  }
+
+  &__price {
+    font-weight: 500;
+  }
+
+  &__delete {
+    &-image {
+      max-width: 25px;
+    }
+  }
+  &__name {
+    line-height: 1.1;
+    @include mobile-s {
+      max-width: clamp(6.25rem, -1.786rem + 35.714vw, 9.375rem);
+    }
+  }
+}
+.products {
+  &__text {
+    border-bottom: 1px solid var(--color-accent);
+    cursor: pointer;
+    @include mobile-s {
+      line-height: 1.2;
+      padding-bottom: 5px;
+    }
+    @include hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__clear {
+    display: flex;
+    align-items: center;
+    transition: all 0.3s;
+    img {
+      max-width: 45px;
+      @include mobile-s {
+        max-width: 35px;
+      }
+    }
+    @include hover {
+      color: var(--color-accent);
+      transform: scale(1.05);
+    }
+  }
+  &__basket {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+    border-bottom: 1px solid var(--color-accent-light);
+    width: 100%;
+    @include tablet {
+      padding: clamp(1.25rem, 0.208rem + 3.333vw, 1.875rem);
+    }
+  }
+  &__wrapper {
+    padding-inline: 20px;
+    @include mobile-s {
+      padding-inline: clamp(0.625rem, -0.179rem + 3.571vw, 0.938rem);
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.check {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    color: #222;
+    gap: 10px;
+  }
+  &__price {
+    font-size: 24px;
+    @include mobile-s {
+      font-size: 22px;
+    }
+  }
+
+  &__buy {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: var(--color-accent);
+    padding: 15px;
+    color: var(--color-gray);
+    transition: all 0.5s;
+    line-height: 1.2;
+    @include hover {
+      opacity: 0.8;
+      transform: scale(1.01);
+    }
+  }
+}
+.product__more,
+.product__info {
+  display: flex;
+  gap: 30px;
+  @include tablet {
+    gap: clamp(0.938rem, -0.313rem + 2.5vw, 1.563rem);
+  }
+  @include mobile {
+    gap: 3px;
+  }
+}
+.products__clear,
+.products__text,
+.product__price,
+.product__name {
+  @include mobile-s {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,130 @@
+.cart {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  @include mobile-s {
+    padding: 15px;
+    max-width: clamp(9.375rem, -0.268rem + 42.857vw, 13.125rem);
+  }
+  .cart__image {
+    @include mobile-s {
+      max-width: clamp(6.875rem, -1.161rem + 35.714vw, 10rem);
+    }
+  }
+
+  @include hover {
+    .cart__image {
+      transform: scale(1.05);
+    }
+  }
+  &__price-title {
+    @include mobile-s {
+      font-size: 18px;
+    }
+  }
+  &__image {
+    transition: all 1s;
+    max-height: 200px;
+    @include mobile {
+      max-width: 170px;
+    }
+  }
+
+  &__price {
+    padding-top: 10px;
+    display: flex;
+    gap: 5px;
+  }
+
+  &__name {
+    padding-bottom: 15px;
+    line-height: 1;
+    @include mobile-s {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &__add {
+    padding: 10px 18px;
+    background-color: var(--color-accent);
+    color: var(--color-gray);
+    border-radius: 10px;
+    transition: all 0.4s;
+    z-index: 111;
+
+    @include hover {
+      opacity: 0.8;
+    }
+    @include tablet {
+      line-height: 1.2;
+    }
+    @include mobile-s {
+      line-height: 1.2;
+      font-size: 14px;
+      padding: 10px 20px;
+    }
+  }
+  &__dis-av {
+    opacity: 0.7;
+    font-size: 16px;
+    text-decoration: line-through;
+    @include mobile-s {
+      font-size: 14px;
+    }
+  }
+}
+.cart.popular {
+  padding: 30px;
+  max-width: 290px;
+  border-radius: 20px;
+  @include tablet {
+    padding: clamp(1.25rem, 0.005rem + 2.494vw, 1.875rem);
+  }
+  @include mobile {
+    width: 100%;
+    max-width: unset;
+  }
+  @include mobile-s {
+    padding: 15px;
+    max-width: clamp(9.375rem, -0.268rem + 42.857vw, 13.125rem);
+  }
+  .cart__image {
+    @include mobile-s {
+      max-width: clamp(6.875rem, -1.161rem + 35.714vw, 10rem);
+    }
+  }
+}
+
+.cart.all {
+  height: 350px;
+  width: clamp(15.625rem, 12.5rem + 4.167vw, 17.5rem);
+  border-radius: 20px;
+  padding: clamp(1.25rem, 0.729rem + 0.694vw, 1.563rem);
+  @include tablet {
+    width: clamp(12.188rem, 9.697rem + 4.988vw, 13.438rem);
+    padding: 15px;
+    height: unset;
+  }
+  @include mobile {
+    width: 100%;
+  }
+}
+.cart.dis {
+  opacity: 0.7;
+  @include hover {
+    cursor: default;
+  }
+  .cart__add {
+    cursor: default;
+    @include hover {
+      opacity: unset;
+    }
+  }
+}
+.accent {
+  background-color: var(--color-accent-coral);
+}

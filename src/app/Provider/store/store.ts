@@ -11,12 +11,20 @@ import {
   REGISTER,
 } from "redux-persist";
 import userReducer from "@features/Auth/slice";
-import { navSectionReducer } from "@features/Navigation/slice";
+import { navSectionReducer } from "@features/Navigation/model/slice";
+import productsReducer from "@entities/products/model/productsSlice";
+import basketReducer from "@features/basket/basketSlice/slice";
+import textReducer from "@shared/store/slices/textSlice";
+import objectReducer from "@shared/store/slices/objectSlice";
 
 // Создаем rootReducer из всех слайсов
 export const rootReducer = combineReducers({
   userReg: userReducer,
   navSection: navSectionReducer,
+  productsList: productsReducer,
+  basket: basketReducer,
+  text: textReducer,
+  object: objectReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-export type NavSectionType = "reg" | "home";
+export type NavSectionType = "main" | "catalog" | "basket" | "about";
 interface IInitialState {
   section: NavSectionType;
 }
 const initialState: IInitialState = {
-  section: "reg",
+  section: "main",
 };
 const navSection = createSlice({
   name: "navSection",

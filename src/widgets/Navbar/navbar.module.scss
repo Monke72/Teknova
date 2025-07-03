@@ -1,0 +1,89 @@
+.nav {
+  display: flex;
+  padding-block: 30px;
+  position: relative;
+  @include mobile {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding-block: 25px;
+  }
+  @include mobile-s {
+    gap: 3px;
+    padding: 15px 0 20px 0;
+  }
+
+  &__name {
+    font-size: 24px;
+    @include tablet {
+      font-size: 20px;
+    }
+  }
+  &__wrapper {
+    position: fixed;
+    width: 100%;
+    background-color: #f0e6e3;
+    z-index: 111;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__list {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    gap: clamp(1.875rem, 0.833rem + 1.389vw, 2.5rem);
+    @include tablet {
+      gap: clamp(1.25rem, 0.005rem + 2.494vw, 1.875rem);
+    }
+    @include mobile {
+      position: static;
+      transform: unset;
+    }
+  }
+
+  &__link {
+    color: var(--color-gray-alt);
+    font-size: clamp(1rem, 0.583rem + 0.556vw, 1.25rem);
+    transition: all 0.5s;
+    padding-bottom: 5px;
+    @include hover {
+      color: var(--color-accent);
+      border-bottom: 1px solid var(--color-accent);
+    }
+  }
+  &__img {
+    max-width: 50px;
+    @include tablet {
+      max-width: 40px;
+    }
+  }
+}
+.shadow {
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+}
+.nav__link.active {
+  color: var(--color-accent);
+  @include hover {
+    border: none;
+  }
+}
+.dropdown {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+
+  &__link {
+    color: var(--color-accent-coral);
+    @include hover {
+      color: var(--color-accent);
+    }
+  }
+}

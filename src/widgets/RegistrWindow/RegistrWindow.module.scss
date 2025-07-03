@@ -3,8 +3,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 370px;
-  padding: 20px 40px 30px 40px;
+  max-width: 390px;
+  padding: 25px 45px 35px 45px;
   border: 4px dashed var(--color-accent);
   border-radius: 30px;
   &::after {
@@ -50,6 +50,7 @@
   &__name {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 10px;
     line-height: 1.1;
     h2 {
@@ -61,7 +62,6 @@
     max-width: 40px;
   }
   &__button {
-    max-width: 120px;
     padding: 10px 20px;
     border: 0;
     border-radius: 10px;

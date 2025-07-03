@@ -1,0 +1,36 @@
+.all {
+  &__sider-prod {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 70px;
+    gap: clamp(1.25rem, -0.625rem + 2.5vw, 1.875rem);
+    @include tablet {
+      padding-top: clamp(2.813rem, 0.945rem + 3.741vw, 3.75rem);
+    }
+    @include mobile-s {
+      padding-top: 35px;
+    }
+  }
+
+  &__products {
+    max-width: 850px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+    gap: clamp(0.625rem, -0.313rem + 1.25vw, 0.938rem);
+    @include tablet {
+      max-width: unset;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: end;
+    }
+    @include mobile {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    @include mobile-s {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}

@@ -2,6 +2,33 @@
   --color-gray: #f9f3f1;
   --color-gray-alt: #333333;
   --color-accent: #5a9bd5;
+  --color-accent-light: rgba(90, 155, 213, 0.3);
   --color-accent-gray: #c8d1e0;
   --color-accent-coral: #e07a5f;
+
+  --font-size-m: 12px;
+  --font-size-l: 16px;
+  --font-size-xl: 24px;
+  --font-size-xxl: 32px;
+
+  --size-padding-nav: 180px;
+  --size-padding-block: 80px;
+
+  @include tablet {
+    --font-size-xxl: 28px;
+    --font-size-xl: 20px;
+    --font-size-l: 14px;
+  }
+  @include mobile {
+    --font-size-xxl: 24px;
+    --size-padding-block: 60px;
+    --font-size-xl: 18px;
+  }
+  @include mobile-s {
+    --font-size-xxl: 20px;
+    --size-padding-block: 45px;
+    --font-size-xl: 16px;
+    --font-size-l: 12px;
+    --size-padding-nav: 140px;
+  }
 }

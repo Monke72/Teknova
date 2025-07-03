@@ -1,0 +1,64 @@
+.banner {
+  padding-top: var(--size-padding-nav);
+  display: flex;
+
+  @include mobile {
+    display: block;
+  }
+  &__apple {
+    background-image: url("https://hi-stores.ru/upload/iblock/e59/ovpwok1liczhi5eupti71n4a5ci0w423.jpg");
+    width: 100%;
+    height: 500px;
+    @include tablet {
+      height: clamp(18.75rem, 6.297rem + 24.938vw, 25rem);
+    }
+    @include mobile {
+      height: clamp(13.75rem, 5.417rem + 26.667vw, 18.75rem);
+    }
+    @include mobile-s {
+      height: clamp(9.375rem, 1.339rem + 35.714vw, 12.5rem);
+    }
+  }
+
+  &__samsung {
+    background-image: url(https://hi-stores.ru/upload/iblock/fdb/1q9dyxr6dfx6562vtncprop8it0b84xo.jpg);
+  }
+
+  &__dyson {
+    background-image: url(https://hi-stores.ru/upload/iblock/24f/3ysp84fizhswer2dg6j3po5ly3lu14wx.jpg);
+  }
+  &__wrapper {
+    width: 50%;
+    @include mobile {
+      width: 100%;
+      display: flex;
+    }
+  }
+}
+.banner__dyson,
+.banner__samsung,
+.banner__apple {
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: all 1s;
+  background-position: center;
+  @include hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+}
+.banner__dyson,
+.banner__samsung {
+  height: 250px;
+  @include tablet {
+    height: clamp(9.375rem, 3.148rem + 12.469vw, 12.5rem);
+  }
+  @include mobile {
+    width: 50%;
+    height: clamp(9.375rem, 4.167rem + 16.667vw, 12.5rem);
+  }
+  @include mobile-s {
+    height: clamp(6.25rem, -1.786rem + 35.714vw, 9.375rem);
+  }
+}
