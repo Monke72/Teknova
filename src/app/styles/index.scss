@@ -37,4 +37,7 @@ h6 {
     max-width: clamp(28.75rem, 0.625rem + 90vw, 45.625rem);
     padding-inline: 15px;
   }
+  @include mobile-s {
+    max-width: clamp(21.25rem, 2.768rem + 82.143vw, 28.438rem);
+  }
 }

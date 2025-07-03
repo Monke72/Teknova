@@ -8,6 +8,9 @@
   @include tablet {
     padding-inline: clamp(1.25rem, -1.25rem + 5vw, 2.5rem);
   }
+  @include mobile-s {
+    padding-inline: clamp(0.938rem, 0.134rem + 3.571vw, 1.25rem);
+  }
 
   &__title {
     padding-bottom: 50px;
@@ -92,6 +95,9 @@
     justify-content: space-between;
     padding: 20px;
     gap: 10px;
+    @include mobile-s {
+      padding: clamp(0.938rem, 0.134rem + 3.571vw, 1.25rem) 3px;
+    }
 
     &:not(:last-child) {
       border-bottom: 1px solid var(--color-accent-light);
@@ -109,12 +115,18 @@
   }
   &__name {
     line-height: 1.1;
+    @include mobile-s {
+      max-width: clamp(6.25rem, -1.786rem + 35.714vw, 9.375rem);
+    }
   }
 }
 .products {
   &__text {
     border-bottom: 1px solid var(--color-accent);
     cursor: pointer;
+    @include mobile-s {
+      line-height: 1.2;
+    }
     @include hover {
       opacity: 0.8;
     }
@@ -126,6 +138,9 @@
     transition: all 0.3s;
     img {
       max-width: 45px;
+      @include mobile-s {
+        max-width: 35px;
+      }
     }
     @include hover {
       color: var(--color-accent);
@@ -146,6 +161,9 @@
   }
   &__wrapper {
     padding-inline: 20px;
+    @include mobile-s {
+      padding-inline: clamp(0.625rem, -0.179rem + 3.571vw, 0.938rem);
+    }
   }
 
   &__list {
@@ -164,6 +182,9 @@
   }
   &__price {
     font-size: 24px;
+    @include mobile-s {
+      font-size: 22px;
+    }
   }
 
   &__buy {
@@ -187,5 +208,16 @@
   gap: 30px;
   @include tablet {
     gap: clamp(0.938rem, -0.313rem + 2.5vw, 1.563rem);
+  }
+  @include mobile {
+    gap: 3px;
+  }
+}
+.products__clear,
+.products__text,
+.product__price,
+.product__name {
+  @include mobile-s {
+    font-size: 16px;
   }
 }

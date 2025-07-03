@@ -15,6 +15,9 @@
     @include mobile {
       height: clamp(13.75rem, 5.417rem + 26.667vw, 18.75rem);
     }
+    @include mobile-s {
+      height: clamp(9.375rem, 1.339rem + 35.714vw, 12.5rem);
+    }
   }
 
   &__samsung {
@@ -54,5 +57,8 @@
   @include mobile {
     width: 50%;
     height: clamp(9.375rem, 4.167rem + 16.667vw, 12.5rem);
+  }
+  @include mobile-s {
+    height: clamp(6.25rem, -1.786rem + 35.714vw, 9.375rem);
   }
 }

@@ -11,6 +11,8 @@ import { useIsWidth } from "@shared/hooks/useIsWidth";
 const AllProducts = () => {
   const [searchValue, setSearchValue] = useState("");
   const products = useAppSelector((state) => state.productsList.products);
+  console.log(products);
+
   const [filteredProducts, setFilteredProducts] =
     useState<IProducts[]>(products);
   const text = useAppSelector((state) => state.text.text);

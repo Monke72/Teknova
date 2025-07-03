@@ -24,4 +24,11 @@
     --size-padding-block: 60px;
     --font-size-xl: 18px;
   }
+  @include mobile-s {
+    --font-size-xxl: 20px;
+    --size-padding-block: 45px;
+    --font-size-xl: 16px;
+    --font-size-l: 12px;
+    --size-padding-nav: 140px;
+  }
 }

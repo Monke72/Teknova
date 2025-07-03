@@ -7,6 +7,9 @@
     @include mobile {
       font-size: 14px;
     }
+    @include mobile-s {
+      line-height: 1.2;
+    }
   }
   &__wrapper {
     display: grid;
@@ -15,6 +18,9 @@
     @include tablet {
       display: flex;
       flex-direction: column;
+    }
+    @include mobile-s {
+      gap: 10px;
     }
   }
 
@@ -26,6 +32,9 @@
     @include mobile {
       padding-bottom: 20px;
     }
+    @include mobile-s {
+      padding-bottom: 15px;
+    }
   }
 
   &__list {
@@ -33,6 +42,9 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    @include mobile-s {
+      gap: 7px;
+    }
   }
 
   &__item-title {
@@ -61,6 +73,9 @@
         left: -20px;
         top: 3px;
       }
+      @include mobile-s {
+        display: none;
+      }
     }
   }
 
@@ -75,6 +90,9 @@
     }
     @include mobile {
       height: clamp(18.75rem, 5.208rem + 43.333vw, 26.875rem);
+    }
+    @include mobile-s {
+      height: clamp(12.5rem, -0.357rem + 57.143vw, 17.5rem);
     }
   }
 }
