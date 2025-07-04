@@ -23,7 +23,11 @@
 ## 📦 Установка
 
 ```bash
-git clone https://github.com/your-username/teknova.git
+git clone https://github.com/Monke72/Teknova
 npm install
 npm run dev
 ```
+
+## ❗ ВАЖНО
+
+Api может не работать без Vpn
