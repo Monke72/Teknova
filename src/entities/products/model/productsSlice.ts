@@ -6,7 +6,7 @@ export const loadProducts = createAsyncThunk(
   "product/loadProducts",
   async () => {
     return await fetchProducts();
-  }
+  },
 );
 interface ProductSlice {
   products: IProducts[];

@@ -12,7 +12,6 @@ const CatalogPage = () => {
   const [category, setCategory] = useState<CategorieType>("popular");
   const text = useAppSelector((state) => state.text.text);
   const object = useAppSelector((state) => state.object.object);
-  console.log(text);
 
   useEffect(() => {
     if (text || Object.keys(object).length > 0) {

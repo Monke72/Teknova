@@ -24,15 +24,12 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const currentSection = useAppSelector((state) => state.navSection.section);
-  const sect = useAppSelector((state) => state.navSection.section);
-  console.log("sect", sect);
 
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 10;
       setHasShadow((prev) => (prev !== isScrolled ? isScrolled : prev));
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
