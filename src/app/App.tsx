@@ -11,6 +11,7 @@ import { useAppDispatch, useAppSelector } from "@shared/hooks/reduxHooks";
 import { NavSectionType, setSection } from "@features/Navigation";
 import { loadProducts } from "@entities/products/model/productsSlice";
 import ScrollToTop from "@shared/ui/ScrollToTop/ScrollToTop";
+import { GlobalProgressOverlay } from "@features/globalLoader/ui/GlobalLoader";
 
 const pathToSectionMap: Record<string, NavSectionType> = {
   "/": "main",
@@ -33,12 +34,15 @@ function App() {
       dispatch(setSection(currentSection));
     }
   }, [location.pathname, dispatch, section]);
+
   useEffect(() => {
     if (!entry) return;
     dispatch(loadProducts());
   }, [dispatch, entry]);
+
   return (
     <>
+      <GlobalProgressOverlay />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />

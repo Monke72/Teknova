@@ -33,7 +33,7 @@ const RegistrWindow = () => {
     setPasswordError(
       passwordIsValid
         ? ""
-        : "Пароль должен содержать 8 символов, цифры и заглавные буквы"
+        : "Пароль должен содержать 8 символов, цифры и заглавные буквы",
     );
     setMailError(mailIsValid ? "" : "Неккоректный маил");
 

@@ -47,7 +47,7 @@ const SearchSider = ({
 
   // Выбор брендов
   const [selectedBrands, setSelectedBrands] = useState<Record<string, boolean>>(
-    {}
+    {},
   );
   const object = useAppSelector((state) => state.object.object);
 
@@ -69,14 +69,14 @@ const SearchSider = ({
   const searchByParametrs = (
     search: string,
     minPriceFilter: number | null = null,
-    maxPriceFilter: number | null = null
+    maxPriceFilter: number | null = null,
   ) => {
     let result = [...products];
 
     if (search.trim() !== "") {
       const lowerSearch = search.toLowerCase();
       result = result.filter((product) =>
-        product.name.toLowerCase().includes(lowerSearch)
+        product.name.toLowerCase().includes(lowerSearch),
       );
     }
 
@@ -91,7 +91,7 @@ const SearchSider = ({
     const max = maxPriceFilter ?? maxPrice;
 
     result = result.filter(
-      (product) => product.price >= min && product.price <= max
+      (product) => product.price >= min && product.price <= max,
     );
 
     if (!allAviability) {
@@ -102,7 +102,7 @@ const SearchSider = ({
 
       if (activeBrands.length > 0) {
         result = result.filter((product) =>
-          activeBrands.includes(product.producer)
+          activeBrands.includes(product.producer),
         );
       }
     }
@@ -115,7 +115,7 @@ const SearchSider = ({
     searchByParametrs(
       debouncedSearchValue,
       debouncedMinPrice,
-      debouncedMaxPrice
+      debouncedMaxPrice,
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [

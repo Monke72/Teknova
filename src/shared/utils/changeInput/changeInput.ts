@@ -2,7 +2,7 @@ import React from "react";
 
 export const changeInput = <T extends string | number | null>(
   e: React.ChangeEvent<HTMLInputElement>,
-  setState: React.Dispatch<React.SetStateAction<T>>
+  setState: React.Dispatch<React.SetStateAction<T>>,
 ) => {
   const value = e.target.value.trim();
 

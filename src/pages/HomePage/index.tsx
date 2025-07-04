@@ -9,12 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
   const entry = useAppSelector((state) => state.userReg.entry);
-  const products = useAppSelector((state) => state.productsList.products);
-  console.log(products);
-
   const navigate = useNavigate();
-
-  console.log(entry);
 
   useEffect(() => {
     if (!entry) {
