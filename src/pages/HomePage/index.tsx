@@ -15,6 +15,7 @@ const HomePage = () => {
     if (!entry) {
       navigate("/reg");
     }
+
     if (entry) {
       navigate("/");
     }
